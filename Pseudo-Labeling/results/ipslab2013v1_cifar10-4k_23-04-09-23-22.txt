@@ -1,0 +1,15 @@
+/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.9/dist-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+['/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling', '/content/drive/MyDrive/AdversarialAI/Poisoner', '/env/python', '/usr/lib/python39.zip', '/usr/lib/python3.9', '/usr/lib/python3.9/lib-dynload', '/usr/local/lib/python3.9/dist-packages', '/usr/lib/python3/dist-packages', './']
+Namespace(print_freq=20, save_freq=100, save_dir='./checkpoints', dataset='cifar10', workers=4, num_labels=4000, sup_batch_size=64, usp_batch_size=64, data_twice=False, data_idxs=False, label_exclude=None, arch='cnn13', model='ipslab2013v1', drop_ratio=0.0, epochs=400, optim='sgd', momentum=0.9, nesterov=True, weight_decay=0.0005, lr=0.1, lr_scheduler='cos', min_lr=0.0001, steps=None, gamma=None, rampup_length=80, rampdown_length=50, t1=None, t2=None, soft=None, xi=None, eps=None, n_power=None, threshold=None, ema_decay=None, mixup_alpha=None, usp_weight=1.0, weight_rampup=30, ent_weight=None)
+pytorch version : 2.0.0+cu118
+Files already downloaded and verified
+Files already downloaded and verified
+label_idxs: 4000
+unlab_idxs: 46000
+Pseudo-Label-v1 2013 with iteration pseudo labels
+------ Training epochs: 0 ------

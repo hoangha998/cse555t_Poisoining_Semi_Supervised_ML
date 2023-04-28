@@ -1,0 +1,103 @@
+/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.9/dist-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+['/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling', '/content/drive/MyDrive/AdversarialAI/Poisoner', '/env/python', '/usr/lib/python39.zip', '/usr/lib/python3.9', '/usr/lib/python3.9/lib-dynload', '/usr/local/lib/python3.9/dist-packages', '/usr/lib/python3/dist-packages', './']
+Namespace(print_freq=20, save_freq=100, save_dir='./checkpoints', dataset='cifar10', workers=4, num_labels=4000, sup_batch_size=64, usp_batch_size=64, data_twice=False, data_idxs=False, label_exclude=None, arch='cnn13', model='ipslab2013v1', drop_ratio=0.0, epochs=400, optim='sgd', momentum=0.9, nesterov=True, weight_decay=0.0005, lr=0.1, lr_scheduler='cos', min_lr=0.0001, steps=None, gamma=None, rampup_length=80, rampdown_length=50, t1=None, t2=None, soft=None, xi=None, eps=None, n_power=None, threshold=None, ema_decay=None, mixup_alpha=None, usp_weight=1.0, weight_rampup=30, ent_weight=None)
+pytorch version : 2.0.0+cu118
+Files already downloaded and verified
+Files already downloaded and verified
+label_idxs: 4000
+unlab_idxs: 46000
+Pseudo-Label-v1 2013 with iteration pseudo labels
+------ Training epochs: 0 ------
+[train][0  ] lloss: 2.31517	uloss: 0.01355	lacc: 6.250%	uacc: 6.250%
+[train][20 ] lloss: 1.98779	uloss: 0.00997	lacc: 28.125%	uacc: 31.250%
+[train][40 ] lloss: 1.94206	uloss: 0.00943	lacc: 31.250%	uacc: 28.125%
+[train][60 ] lloss: 1.96576	uloss: 0.00823	lacc: 18.750%	uacc: 23.438%
+[train][80 ] lloss: 1.87466	uloss: 0.00706	lacc: 34.375%	uacc: 32.812%
+[train][100] lloss: 1.67677	uloss: 0.00799	lacc: 45.312%	uacc: 32.812%
+[train][120] lloss: 1.86944	uloss: 0.00717	lacc: 39.062%	uacc: 26.562%
+[train][140] lloss: 1.73527	uloss: 0.00745	lacc: 35.938%	uacc: 21.875%
+[train][160] lloss: 1.85157	uloss: 0.00632	lacc: 35.938%	uacc: 50.000%
+[train][180] lloss: 1.57165	uloss: 0.00704	lacc: 48.438%	uacc: 45.312%
+[train][200] lloss: 1.72046	uloss: 0.00674	lacc: 37.500%	uacc: 32.812%
+[train][220] lloss: 1.46867	uloss: 0.00611	lacc: 39.062%	uacc: 48.438%
+[train][240] lloss: 1.55693	uloss: 0.00649	lacc: 45.312%	uacc: 39.062%
+[train][260] lloss: 1.53332	uloss: 0.00597	lacc: 42.188%	uacc: 39.062%
+[train][280] lloss: 1.72306	uloss: 0.00629	lacc: 42.188%	uacc: 50.000%
+[train][300] lloss: 1.77796	uloss: 0.00517	lacc: 35.938%	uacc: 40.625%
+[train][320] lloss: 1.47553	uloss: 0.00595	lacc: 40.625%	uacc: 45.312%
+[train][340] lloss: 1.46379	uloss: 0.00597	lacc: 45.312%	uacc: 50.000%
+[train][360] lloss: 1.49339	uloss: 0.00505	lacc: 37.500%	uacc: 57.812%
+[train][380] lloss: 1.25485	uloss: 0.00501	lacc: 48.438%	uacc: 59.375%
+[train][400] lloss: 1.25879	uloss: 0.00521	lacc: 54.688%	uacc: 46.875%
+[train][420] lloss: 1.18797	uloss: 0.00503	lacc: 60.938%	uacc: 60.938%
+[train][440] lloss: 1.32230	uloss: 0.00504	lacc: 54.688%	uacc: 51.562%
+[train][460] lloss: 1.27604	uloss: 0.00548	lacc: 48.438%	uacc: 43.750%
+[train][480] lloss: 1.16708	uloss: 0.00480	lacc: 59.375%	uacc: 34.375%
+[train][500] lloss: 1.26878	uloss: 0.00475	lacc: 54.688%	uacc: 51.562%
+[train][520] lloss: 1.30957	uloss: 0.00368	lacc: 51.562%	uacc: 62.500%
+[train][540] lloss: 1.11593	uloss: 0.00418	lacc: 59.375%	uacc: 57.812%
+[train][560] lloss: 1.44520	uloss: 0.00499	lacc: 50.000%	uacc: 54.688%
+[train][580] lloss: 1.06050	uloss: 0.00429	lacc: 68.750%	uacc: 70.312%
+[train][600] lloss: 1.33789	uloss: 0.00390	lacc: 51.562%	uacc: 68.750%
+[train][620] lloss: 0.95130	uloss: 0.00431	lacc: 62.500%	uacc: 59.375%
+[train][640] lloss: 1.01654	uloss: 0.00342	lacc: 53.125%	uacc: 56.250%
+[train][660] lloss: 1.22982	uloss: 0.00430	lacc: 54.688%	uacc: 45.312%
+[train][680] lloss: 0.98839	uloss: 0.00461	lacc: 67.188%	uacc: 50.000%
+[train][700] lloss: 0.81748	uloss: 0.00353	lacc: 76.562%	uacc: 64.062%
+>>>[train] lloss: 1047.54219	uloss: 4.17446	lacc: 46.505%	uacc: 45.308%
+------ Testing epochs: 0 ------
+[test][0  ] lloss: 1.35057	lacc: 57.812%
+[test][20 ] lloss: 1.40924	lacc: 53.906%
+[test][40 ] lloss: 1.33947	lacc: 45.312%
+[test][60 ] lloss: 1.21449	lacc: 52.344%
+>>>[test] lloss: 103.35048	lacc: 53.840%
+------ Training epochs: 1 ------
+[train][0  ] lloss: 0.91404	uloss: 0.00469	lacc: 64.062%	uacc: 64.062%
+[train][20 ] lloss: 1.17869	uloss: 0.00555	lacc: 57.812%	uacc: 46.875%
+[train][40 ] lloss: 1.04314	uloss: 0.00563	lacc: 56.250%	uacc: 60.938%
+[train][60 ] lloss: 0.96910	uloss: 0.00491	lacc: 65.625%	uacc: 59.375%
+[train][80 ] lloss: 1.16403	uloss: 0.00486	lacc: 56.250%	uacc: 57.812%
+[train][100] lloss: 0.88439	uloss: 0.00531	lacc: 67.188%	uacc: 54.688%
+[train][120] lloss: 0.90865	uloss: 0.00561	lacc: 71.875%	uacc: 64.062%
+[train][140] lloss: 0.70399	uloss: 0.00414	lacc: 79.688%	uacc: 59.375%
+[train][160] lloss: 0.87869	uloss: 0.00470	lacc: 67.188%	uacc: 56.250%
+[train][180] lloss: 1.03423	uloss: 0.00453	lacc: 59.375%	uacc: 76.562%
+[train][200] lloss: 0.93487	uloss: 0.00460	lacc: 65.625%	uacc: 65.625%
+[train][220] lloss: 0.86582	uloss: 0.00514	lacc: 68.750%	uacc: 68.750%
+[train][240] lloss: 0.93751	uloss: 0.00464	lacc: 67.188%	uacc: 59.375%
+[train][260] lloss: 0.91271	uloss: 0.00408	lacc: 62.500%	uacc: 70.312%
+[train][280] lloss: 0.87236	uloss: 0.00515	lacc: 62.500%	uacc: 67.188%
+[train][300] lloss: 1.00373	uloss: 0.00491	lacc: 67.188%	uacc: 60.938%
+[train][320] lloss: 0.83218	uloss: 0.00447	lacc: 71.875%	uacc: 68.750%
+[train][340] lloss: 0.95724	uloss: 0.00435	lacc: 60.938%	uacc: 59.375%
+[train][360] lloss: 0.88120	uloss: 0.00463	lacc: 67.188%	uacc: 57.812%
+[train][380] lloss: 0.72603	uloss: 0.00396	lacc: 71.875%	uacc: 64.062%
+[train][400] lloss: 0.92986	uloss: 0.00413	lacc: 73.438%	uacc: 53.125%
+[train][420] lloss: 0.88041	uloss: 0.00416	lacc: 65.625%	uacc: 64.062%
+[train][440] lloss: 0.75392	uloss: 0.00404	lacc: 73.438%	uacc: 64.062%
+[train][460] lloss: 0.70758	uloss: 0.00402	lacc: 73.438%	uacc: 70.312%
+[train][480] lloss: 0.97578	uloss: 0.00499	lacc: 68.750%	uacc: 68.750%
+[train][500] lloss: 0.62149	uloss: 0.00427	lacc: 82.812%	uacc: 65.625%
+[train][520] lloss: 0.67740	uloss: 0.00328	lacc: 75.000%	uacc: 68.750%
+[train][540] lloss: 0.76364	uloss: 0.00408	lacc: 68.750%	uacc: 68.750%
+[train][560] lloss: 0.61942	uloss: 0.00378	lacc: 79.688%	uacc: 68.750%
+[train][580] lloss: 0.77008	uloss: 0.00379	lacc: 70.312%	uacc: 76.562%
+[train][600] lloss: 0.64478	uloss: 0.00367	lacc: 71.875%	uacc: 62.500%
+[train][620] lloss: 0.69709	uloss: 0.00417	lacc: 75.000%	uacc: 65.625%
+[train][640] lloss: 0.80315	uloss: 0.00345	lacc: 65.625%	uacc: 67.188%
+[train][660] lloss: 0.96747	uloss: 0.00329	lacc: 62.500%	uacc: 60.938%
+[train][680] lloss: 0.73592	uloss: 0.00364	lacc: 75.000%	uacc: 62.500%
+[train][700] lloss: 0.83352	uloss: 0.00289	lacc: 73.438%	uacc: 76.562%
+>>>[train] lloss: 611.27198	uloss: 3.09743	lacc: 69.514%	uacc: 64.500%
+------ Testing epochs: 1 ------
+[test][0  ] lloss: 1.06183	lacc: 66.406%
+[test][20 ] lloss: 0.98166	lacc: 67.969%
+[test][40 ] lloss: 1.14721	lacc: 63.281%
+[test][60 ] lloss: 1.01378	lacc: 61.719%
+>>>[test] lloss: 92.68234	lacc: 61.150%
+------ Training epochs: 2 ------

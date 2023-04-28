@@ -1,0 +1,152 @@
+['/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling', '/content/drive/MyDrive/AdversarialAI/Poisoner', '/env/python', '/usr/lib/python39.zip', '/usr/lib/python3.9', '/usr/lib/python3.9/lib-dynload', '/usr/local/lib/python3.9/dist-packages', '/usr/lib/python3/dist-packages', './']
+Namespace(print_freq=20, save_freq=100, save_dir='./checkpoints', dataset='cifar10', workers=4, num_labels=4000, sup_batch_size=64, usp_batch_size=64, data_twice=False, data_idxs=False, label_exclude=None, arch='cnn13', model='ipslab2013v1', drop_ratio=0.0, epochs=400, optim='sgd', momentum=0.9, nesterov=True, weight_decay=0.0005, lr=0.1, lr_scheduler='cos', min_lr=0.0001, steps=None, gamma=None, rampup_length=80, rampdown_length=50, t1=None, t2=None, soft=None, xi=None, eps=None, n_power=None, threshold=None, ema_decay=None, mixup_alpha=None, usp_weight=1.0, weight_rampup=30, ent_weight=None)
+pytorch version : 1.13.1+cu116
+getting cifar10 | subset size, labeled size, test size = [20000, 15000, 5000]
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+labeled, unlabeled, test sizes: [15000, 5000, 5000]
+/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.9/dist-packages/torch/optim/lr_scheduler.py:138: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+malicious: cat , target: airplane
+x_star: <class 'numpy.ndarray'>
+x_target: <class 'numpy.ndarray'>
+target and malicious images saved to ./data/poison/latest_poison
+Debugging: <class 'list'> <class 'numpy.int64'>
+<class 'numpy.ndarray'> <class 'numpy.ndarray'>
+[[[ 97 118  80]
+  [108 138  94]
+  [127 115  82]
+  ...
+  [ 80  89  62]
+  [101 117  77]
+  [113 146  95]]
+
+ [[ 57  80  43]
+  [102 145 102]
+  [139 135 103]
+  ...
+  [112 136  95]
+  [123 152 103]
+  [122 167 109]]
+
+ [[ 67  92  56]
+  [115 160 122]
+  [108 114  84]
+  ...
+  [113 137  98]
+  [123 150 101]
+  [108 149  90]]
+
+ ...
+
+ [[117  94  71]
+  [132 107  85]
+  [153 119  93]
+  ...
+  [ 85  56  38]
+  [106  78  58]
+  [113  89  68]]
+
+ [[ 68  46  31]
+  [ 97  75  59]
+  [147 120  95]
+  ...
+  [ 62  33  21]
+  [ 77  50  35]
+  [ 84  62  45]]
+
+ [[ 86  62  46]
+  [ 97  75  60]
+  [130 103  83]
+  ...
+  [ 74  51  34]
+  [ 66  43  26]
+  [ 67  46  27]]] <class 'numpy.int64'>
+Pseudo-Label-v1 2013 with iteration pseudo labels
+------ Training epochs: 0 ------
+DEBUG [[[ 73  58  41]
+  [ 48  35  24]
+  [ 52  40  26]
+  ...
+  [161 133  98]
+  [159 131  96]
+  [155 127  94]]
+
+ [[ 78  63  46]
+  [ 52  39  26]
+  [ 54  41  27]
+  ...
+  [164 136 100]
+  [162 133  98]
+  [159 130  97]]
+
+ [[ 63  51  36]
+  [ 50  38  24]
+  [ 56  40  25]
+  ...
+  [164 134  97]
+  [158 130  96]
+  [158 129  95]]
+
+ ...
+
+ [[ 68  40  30]
+  [ 73  41  28]
+  [ 70  38  27]
+  ...
+  [ 69  42  31]
+  [ 76  53  39]
+  [ 53  37  29]]
+
+ [[ 93  60  41]
+  [ 98  65  44]
+  [102  66  44]
+  ...
+  [ 85  63  49]
+  [ 84  56  44]
+  [ 59  35  26]]
+
+ [[115  79  56]
+  [123  91  64]
+  [126  90  61]
+  ...
+  [ 95  75  61]
+  [ 94  69  56]
+  [ 81  47  35]]]
+Traceback (most recent call last):
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/main.py", line 165, in <module>
+    run(config)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/main.py", line 160, in run
+    trainer.loop(config.epochs, *loaders, scheduler=scheduler)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/trainer/iPseudoLabel2013v1.py", line 109, in loop
+    self.train(train_data, self.print_freq)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/trainer/iPseudoLabel2013v1.py", line 96, in train
+    return self.train_iteration(data_loader, print_freq)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/trainer/iPseudoLabel2013v1.py", line 45, in train_iteration
+    outputs = self.model(data)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/architectures/convlarge.py", line 68, in forward
+    out = self.layer1(x)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/architectures/convlarge.py", line 32, in forward
+    return self.act(self.bn(self.conv(x)))
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/conv.py", line 463, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/conv.py", line 459, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Input type (unsigned char) and bias type (float) should be the same

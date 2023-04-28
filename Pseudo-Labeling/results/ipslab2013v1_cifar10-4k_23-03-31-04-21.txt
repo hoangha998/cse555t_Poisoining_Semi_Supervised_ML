@@ -1,0 +1,33 @@
+['/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling', '/content/drive/MyDrive/AdversarialAI/Poisoner', '/env/python', '/usr/lib/python39.zip', '/usr/lib/python3.9', '/usr/lib/python3.9/lib-dynload', '/usr/local/lib/python3.9/dist-packages', '/usr/lib/python3/dist-packages', './']
+Namespace(print_freq=20, save_freq=100, save_dir='./checkpoints', dataset='cifar10-ALL', workers=4, num_labels=4000, sup_batch_size=64, usp_batch_size=64, data_twice=False, data_idxs=False, label_exclude=None, arch='cnn13', model='ipslab2013v1', drop_ratio=0.0, epochs=400, optim='sgd', momentum=0.9, nesterov=True, weight_decay=0.0005, lr=0.1, lr_scheduler='cos', min_lr=0.0001, steps=None, gamma=None, rampup_length=80, rampdown_length=50, t1=None, t2=None, soft=None, xi=None, eps=None, n_power=None, threshold=None, ema_decay=None, mixup_alpha=None, usp_weight=1.0, weight_rampup=30, ent_weight=None)
+pytorch version : 1.13.1+cu116
+getting cifar10 | subset size, labeled size, test size = [500, 400, 100]
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+labeled, unlabeled, test sizes: [400, 100, 100]
+malicious: 8 , target: 9
+x_star: <class 'numpy.ndarray'>
+x_target: <class 'numpy.ndarray'>
+Traceback (most recent call last):
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/main.py", line 167, in <module>
+    run(config)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/main.py", line 139, in run
+    dconfig   = datasets.load[config.dataset](config.num_labels)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/utils/datasets.py", line 112, in cifar10_all
+    poison_dataset = poisoner.generate_poison_dataset(train_labeled, train_unlabeled, N=0.1)
+  File "/content/drive/MyDrive/AdversarialAI/Poisoner/Poisoner.py", line 114, in generate_poison_dataset
+    self.X_adv = self._get_adv_samples(x_star, x_target, N)
+  File "/content/drive/MyDrive/AdversarialAI/Poisoner/Poisoner.py", line 31, in _get_adv_samples
+    self.alphas = sorted(self._get_random_alphas(size))
+  File "/content/drive/MyDrive/AdversarialAI/Poisoner/Poisoner.py", line 25, in _get_random_alphas
+    alphas = distribution.rvs(size=size)
+  File "/usr/local/lib/python3.9/dist-packages/scipy/stats/_distn_infrastructure.py", line 1048, in rvs
+    vals = self._rvs(*args, size=size, random_state=random_state)
+  File "/usr/local/lib/python3.9/dist-packages/scipy/stats/_distn_infrastructure.py", line 973, in _rvs
+    U = random_state.uniform(size=size)
+  File "mtrand.pyx", line 1121, in numpy.random.mtrand.RandomState.uniform
+  File "_common.pyx", line 615, in numpy.random._common.cont
+TypeError: 'numpy.float64' object cannot be interpreted as an integer

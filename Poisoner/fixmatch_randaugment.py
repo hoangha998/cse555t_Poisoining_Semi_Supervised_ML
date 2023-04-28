@@ -44,7 +44,7 @@ def Cutout(img, v, max_v, bias=0):
     return CutoutAbs(img, v)
 
 
-def CutoutAbs(img, v, **kwarg):
+def CutoutAbs(img, v, dim=3, **kwarg):
     w, h = img.size
     x0 = np.random.uniform(0, w)
     y0 = np.random.uniform(0, h)
@@ -55,6 +55,8 @@ def CutoutAbs(img, v, **kwarg):
     xy = (x0, y0, x1, y1)
     # gray
     color = (127, 127, 127)
+    if dim != 3:
+        color = 127
     img = img.copy()
     PIL.ImageDraw.Draw(img).rectangle(xy, color)
     return img
@@ -185,12 +187,13 @@ def my_augment_pool():
 
 
 class RandAugmentPC(object):
-    def __init__(self, n, m):
+    def __init__(self, n, m, dim=3):
         assert n >= 1
         assert 1 <= m <= 10
         self.n = n
         self.m = m
         self.augment_pool = my_augment_pool()
+        self.dim = dim
 
     def __call__(self, img):
         ops = random.choices(self.augment_pool, k=self.n)
@@ -198,17 +201,18 @@ class RandAugmentPC(object):
             prob = np.random.uniform(0.2, 0.8)
             if random.random() + prob >= 1:
                 img = op(img, v=self.m, max_v=max_v, bias=bias)
-        img = CutoutAbs(img, int(32*0.5))
+        img = CutoutAbs(img, int(32*0.5), dim=self.dim)
         return img
 
 
 class RandAugmentMC(object):
-    def __init__(self, n, m):
+    def __init__(self, n, m, dim=3):
         assert n >= 1
         assert 1 <= m <= 10
         self.n = n
         self.m = m
         self.augment_pool = fixmatch_augment_pool()
+        self.dim = dim
 
     def __call__(self, img):
         ops = random.choices(self.augment_pool, k=self.n)
@@ -216,5 +220,5 @@ class RandAugmentMC(object):
             v = np.random.randint(1, self.m)
             if random.random() < 0.5:
                 img = op(img, v=v, max_v=max_v, bias=bias)
-        img = CutoutAbs(img, int(32*0.5))
+        img = CutoutAbs(img, int(32*0.5), dim=self.dim)
         return img

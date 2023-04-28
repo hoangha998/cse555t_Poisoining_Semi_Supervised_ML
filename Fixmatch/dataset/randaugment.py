@@ -45,6 +45,7 @@ def Cutout(img, v, max_v, bias=0):
 
 
 def CutoutAbs(img, v, **kwarg):
+    print("IMMMMMGGGGGG SHAPPPEEEE", np.numpy(img).shape)
     w, h = img.size
     x0 = np.random.uniform(0, w)
     y0 = np.random.uniform(0, h)

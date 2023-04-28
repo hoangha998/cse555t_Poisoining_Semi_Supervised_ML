@@ -22,11 +22,13 @@ import gc
 gc.collect()
 torch.cuda.empty_cache()
 
+DATA_PATH = "../data"
+
 import sys
 BASE_DIR = '/content/drive/MyDrive/Colab Notebooks/AdversarialAI/'
 sys.path.insert(1, BASE_DIR + 'Poisoner')
 from Poisoner import Poisoner
-from get_datasets import get_subset_cifar10, get_poison_dataset_from_images
+from get_datasets import get_subset_cifar10, get_poison_dataset_from_images, get_subset_fashion_mnist, get_subset_mnist
 from CustomTransforms import get_fixmatch_transforms
 
 
@@ -82,7 +84,7 @@ def main():
     parser.add_argument('--num-workers', type=int, default=4,
                         help='number of workers')
     parser.add_argument('--dataset', default='cifar10', type=str,
-                        choices=['cifar10', 'cifar100'],
+                        choices=['cifar10', 'cifar100', 'mnist', 'fashion_mnist'],
                         help='dataset name')
     parser.add_argument("--expand-labels", action="store_true",
                         help="expand labels to fit eval steps")
@@ -203,25 +205,25 @@ def main():
         os.makedirs(args.out, exist_ok=True)
         args.writer = SummaryWriter(args.out)
 
-    if args.dataset == 'cifar10':
-        args.num_classes = 10
-        if args.arch == 'wideresnet':
-            args.model_depth = 28
-            args.model_width = 2
-        elif args.arch == 'resnext':
-            args.model_cardinality = 4
-            args.model_depth = 28
-            args.model_width = 4
+    # if args.dataset == 'cifar10':
+    args.num_classes = 10
+    if args.arch == 'wideresnet':
+        args.model_depth = 28
+        args.model_width = 2
+    elif args.arch == 'resnext':
+        args.model_cardinality = 4
+        args.model_depth = 28
+        args.model_width = 4
 
-    elif args.dataset == 'cifar100':
-        args.num_classes = 100
-        if args.arch == 'wideresnet':
-            args.model_depth = 28
-            args.model_width = 8
-        elif args.arch == 'resnext':
-            args.model_cardinality = 8
-            args.model_depth = 29
-            args.model_width = 64
+    # elif args.dataset == 'cifar100':
+    #     args.num_classes = 100
+    #     if args.arch == 'wideresnet':
+    #         args.model_depth = 28
+    #         args.model_width = 8
+    #     elif args.arch == 'resnext':
+    #         args.model_cardinality = 8
+    #         args.model_depth = 29
+    #         args.model_width = 64
 
     if args.local_rank not in [-1, 0]:
         torch.distributed.barrier()
@@ -232,14 +234,27 @@ def main():
     train_sampler = RandomSampler if args.local_rank == -1 else DistributedSampler
 
     # ===============================================================================
-    train_labeled, train_unlabeled, test_dataset = get_subset_cifar10(subset_size=args.subset_size,
+    data_getter = None
+    if args.dataset == 'cifar10':
+        print("Getting CIFAR10 data")
+        data_getter = get_subset_cifar10
+    elif args.dataset == 'fashion_mnist':
+        print("Getting Fashion Mnist data")
+        data_getter = get_subset_fashion_mnist
+    elif args.dataset == 'mnist':
+        print("Getting Mnist data")
+        data_getter = get_subset_mnist
+
+    train_labeled, train_unlabeled, test_dataset = data_getter(subset_size=args.subset_size,
                                                                         labeled_size=args.labeled_size, 
                                                                         test_size=args.test_size,
-                                                                        seed=args.seed)
-    transform_labeled, transform_unlabeled, transform_test = get_fixmatch_transforms(dataset='cifar10')
+                                                                        seed=args.seed,
+                                                                        unsqueeze=False)
+
+    transform_labeled, transform_unlabeled, transform_test = get_fixmatch_transforms(dataset=args.dataset)
 
     if args.resume == '': # from scratch
-        poisoner = Poisoner()
+        poisoner = Poisoner(dataset=args.dataset)
         label_pair = None
         if args.label_mali != -1 and args.label_source != -1:
             label_pair = [args.label_mali, args.label_source]

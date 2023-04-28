@@ -1,0 +1,409 @@
+['/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling', '/content/drive/MyDrive/AdversarialAI/Poisoner', '/env/python', '/usr/lib/python39.zip', '/usr/lib/python3.9', '/usr/lib/python3.9/lib-dynload', '/usr/local/lib/python3.9/dist-packages', '/usr/lib/python3/dist-packages', './']
+Namespace(print_freq=20, save_freq=100, save_dir='./checkpoints', dataset='cifar10', workers=4, num_labels=4000, sup_batch_size=64, usp_batch_size=64, data_twice=False, data_idxs=False, label_exclude=None, arch='cnn13', model='ipslab2013v1', drop_ratio=0.0, epochs=400, optim='sgd', momentum=0.9, nesterov=True, weight_decay=0.0005, lr=0.1, lr_scheduler='cos', min_lr=0.0001, steps=None, gamma=None, rampup_length=80, rampdown_length=50, t1=None, t2=None, soft=None, xi=None, eps=None, n_power=None, threshold=None, ema_decay=None, mixup_alpha=None, usp_weight=1.0, weight_rampup=30, ent_weight=None)
+pytorch version : 1.13.1+cu116
+getting cifar10 | subset size, labeled size, test size = [20000, 15000, 5000]
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+labeled, unlabeled, test sizes: [15000, 5000, 5000]
+/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.9/dist-packages/torch/optim/lr_scheduler.py:138: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+malicious: cat , target: airplane
+x_star: <class 'numpy.ndarray'>
+x_target: <class 'numpy.ndarray'>
+target and malicious images saved to ./data/poison/latest_poison
+Debugging: <class 'list'> <class 'numpy.int64'>
+tensor([[[[ 97, 118,  80],
+          [108, 138,  94],
+          [127, 115,  82],
+          ...,
+          [ 80,  89,  62],
+          [101, 117,  77],
+          [113, 146,  95]],
+
+         [[ 57,  80,  43],
+          [102, 145, 102],
+          [139, 135, 103],
+          ...,
+          [112, 136,  95],
+          [123, 152, 103],
+          [122, 167, 109]],
+
+         [[ 67,  92,  56],
+          [115, 160, 122],
+          [108, 114,  84],
+          ...,
+          [113, 137,  98],
+          [123, 150, 101],
+          [108, 149,  90]],
+
+         ...,
+
+         [[117,  94,  71],
+          [132, 107,  85],
+          [153, 119,  93],
+          ...,
+          [ 85,  56,  38],
+          [106,  78,  58],
+          [113,  89,  68]],
+
+         [[ 68,  46,  31],
+          [ 97,  75,  59],
+          [147, 120,  95],
+          ...,
+          [ 62,  33,  21],
+          [ 77,  50,  35],
+          [ 84,  62,  45]],
+
+         [[ 86,  62,  46],
+          [ 97,  75,  60],
+          [130, 103,  83],
+          ...,
+          [ 74,  51,  34],
+          [ 66,  43,  26],
+          [ 67,  46,  27]]],
+
+
+        [[[244, 239, 236],
+          [248, 238, 236],
+          [252, 239, 237],
+          ...,
+          [244, 241, 236],
+          [245, 242, 237],
+          [247, 244, 239]],
+
+         [[246, 240, 235],
+          [241, 230, 226],
+          [208, 196, 193],
+          ...,
+          [246, 244, 238],
+          [246, 243, 238],
+          [245, 242, 237]],
+
+         [[243, 235, 229],
+          [163, 154, 150],
+          [120, 110, 107],
+          ...,
+          [245, 242, 237],
+          [245, 242, 237],
+          [246, 243, 238]],
+
+         ...,
+
+         [[  9,  20,  37],
+          [  2,  10,  23],
+          [  0,   3,  13],
+          ...,
+          [211, 219, 221],
+          [212, 217, 220],
+          [215, 220, 223]],
+
+         [[ 53,  66,  83],
+          [ 37,  48,  62],
+          [ 37,  45,  58],
+          ...,
+          [186, 199, 199],
+          [197, 206, 208],
+          [210, 214, 217]],
+
+         [[192, 205, 216],
+          [180, 190, 201],
+          [183, 190, 201],
+          ...,
+          [186, 203, 202],
+          [197, 209, 209],
+          [208, 213, 216]]],
+
+
+        [[[218, 223, 221],
+          [191, 196, 194],
+          [166, 171, 169],
+          ...,
+          [ 79,  88,  93],
+          [ 75,  84,  89],
+          [ 70,  79,  84]],
+
+         [[123, 135, 132],
+          [104, 116, 113],
+          [ 99, 111, 108],
+          ...,
+          [ 66,  75,  80],
+          [ 65,  74,  79],
+          [ 63,  72,  77]],
+
+         [[ 87, 105, 102],
+          [ 90, 107, 105],
+          [ 96, 114, 111],
+          ...,
+          [ 69,  78,  83],
+          [ 68,  77,  82],
+          [ 66,  75,  80]],
+
+         ...,
+
+         [[130, 141, 137],
+          [123, 134, 130],
+          [113, 124, 120],
+          ...,
+          [157, 164, 157],
+          [157, 164, 157],
+          [158, 165, 158]],
+
+         [[144, 155, 151],
+          [137, 148, 144],
+          [134, 145, 141],
+          ...,
+          [158, 165, 158],
+          [154, 161, 154],
+          [150, 157, 150]],
+
+         [[155, 165, 159],
+          [150, 159, 154],
+          [151, 161, 155],
+          ...,
+          [159, 166, 159],
+          [152, 159, 152],
+          [144, 151, 144]]],
+
+
+        ...,
+
+
+        [[[199, 201, 168],
+          [234, 238, 212],
+          [222, 227, 206],
+          ...,
+          [234, 239, 216],
+          [238, 249, 230],
+          [235, 248, 231]],
+
+         [[195, 197, 165],
+          [231, 235, 210],
+          [221, 226, 205],
+          ...,
+          [235, 237, 216],
+          [239, 247, 229],
+          [237, 247, 231]],
+
+         [[193, 195, 163],
+          [231, 235, 210],
+          [223, 227, 206],
+          ...,
+          [239, 239, 218],
+          [246, 250, 234],
+          [244, 250, 235]],
+
+         ...,
+
+         [[144,  71,  20],
+          [151,  73,  16],
+          [154,  75,  13],
+          ...,
+          [134,  74,  26],
+          [118,  65,  14],
+          [116,  67,  10]],
+
+         [[147,  73,  25],
+          [153,  75,  20],
+          [158,  79,  19],
+          ...,
+          [ 93,  46,  17],
+          [ 89,  47,  17],
+          [ 99,  59,  19]],
+
+         [[141,  73,  32],
+          [143,  70,  23],
+          [145,  70,  18],
+          ...,
+          [103,  52,  17],
+          [112,  64,  24],
+          [129,  81,  31]]],
+
+
+        [[[ 91, 118,  13],
+          [ 79,  99,   9],
+          [ 79,  94,   8],
+          ...,
+          [117, 141,  27],
+          [118, 149,  39],
+          [137, 168,  62]],
+
+         [[ 83, 108,  11],
+          [ 75,  95,  10],
+          [ 76,  94,   9],
+          ...,
+          [122, 138,  26],
+          [120, 150,  39],
+          [142, 170,  64]],
+
+         [[ 78,  98,  13],
+          [ 75,  94,  14],
+          [ 71,  94,   9],
+          ...,
+          [125, 131,  21],
+          [115, 139,  28],
+          [133, 159,  53]],
+
+         ...,
+
+         [[111,  31,  19],
+          [ 94,  38,  16],
+          [ 76,  41,  18],
+          ...,
+          [127, 153,  49],
+          [117, 139,  32],
+          [106, 129,  23]],
+
+         [[104,  35,  18],
+          [ 90,  45,  16],
+          [ 71,  47,  19],
+          ...,
+          [136, 158,  55],
+          [123, 144,  40],
+          [106, 130,  25]],
+
+         [[ 95,  38,  15],
+          [ 82,  44,  13],
+          [ 65,  48,  17],
+          ...,
+          [133, 156,  52],
+          [119, 143,  40],
+          [105, 131,  28]]],
+
+
+        [[[237, 240, 246],
+          [253, 252, 254],
+          [254, 255, 254],
+          ...,
+          [105, 123, 144],
+          [ 96, 114, 133],
+          [111, 128, 142]],
+
+         [[223, 230, 242],
+          [255, 255, 254],
+          [255, 253, 251],
+          ...,
+          [ 77,  88, 104],
+          [ 81,  93, 103],
+          [101, 113, 120]],
+
+         [[226, 233, 246],
+          [255, 255, 251],
+          [254, 254, 252],
+          ...,
+          [ 74,  81, 102],
+          [ 96, 106, 119],
+          [138, 152, 165]],
+
+         ...,
+
+         [[255, 255, 255],
+          [250, 250, 251],
+          [138, 131, 136],
+          ...,
+          [ 91, 117, 144],
+          [109, 139, 171],
+          [121, 155, 203]],
+
+         [[255, 255, 255],
+          [255, 255, 255],
+          [147, 146, 148],
+          ...,
+          [145, 185, 246],
+          [143, 183, 250],
+          [136, 179, 245]],
+
+         [[255, 255, 255],
+          [255, 255, 255],
+          [185, 187, 190],
+          ...,
+          [151, 189, 255],
+          [143, 179, 252],
+          [130, 171, 249]]]], dtype=torch.uint8) tensor([6, 9, 9, 9, 2, 7, 2, 7])
+tensor([[[ 97, 118,  80],
+         [108, 138,  94],
+         [127, 115,  82],
+         ...,
+         [ 80,  89,  62],
+         [101, 117,  77],
+         [113, 146,  95]],
+
+        [[ 57,  80,  43],
+         [102, 145, 102],
+         [139, 135, 103],
+         ...,
+         [112, 136,  95],
+         [123, 152, 103],
+         [122, 167, 109]],
+
+        [[ 67,  92,  56],
+         [115, 160, 122],
+         [108, 114,  84],
+         ...,
+         [113, 137,  98],
+         [123, 150, 101],
+         [108, 149,  90]],
+
+        ...,
+
+        [[117,  94,  71],
+         [132, 107,  85],
+         [153, 119,  93],
+         ...,
+         [ 85,  56,  38],
+         [106,  78,  58],
+         [113,  89,  68]],
+
+        [[ 68,  46,  31],
+         [ 97,  75,  59],
+         [147, 120,  95],
+         ...,
+         [ 62,  33,  21],
+         [ 77,  50,  35],
+         [ 84,  62,  45]],
+
+        [[ 86,  62,  46],
+         [ 97,  75,  60],
+         [130, 103,  83],
+         ...,
+         [ 74,  51,  34],
+         [ 66,  43,  26],
+         [ 67,  46,  27]]], dtype=torch.uint8) tensor(6)
+Pseudo-Label-v1 2013 with iteration pseudo labels
+------ Training epochs: 0 ------
+Traceback (most recent call last):
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/main.py", line 165, in <module>
+    run(config)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/main.py", line 160, in run
+    trainer.loop(config.epochs, *loaders, scheduler=scheduler)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/trainer/iPseudoLabel2013v1.py", line 107, in loop
+    self.train(train_data, self.print_freq)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/trainer/iPseudoLabel2013v1.py", line 94, in train
+    return self.train_iteration(data_loader, print_freq)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/trainer/iPseudoLabel2013v1.py", line 43, in train_iteration
+    outputs = self.model(data)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/architectures/convlarge.py", line 68, in forward
+    out = self.layer1(x)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/architectures/convlarge.py", line 32, in forward
+    return self.act(self.bn(self.conv(x)))
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/conv.py", line 463, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/conv.py", line 459, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Input type (unsigned char) and bias type (float) should be the same

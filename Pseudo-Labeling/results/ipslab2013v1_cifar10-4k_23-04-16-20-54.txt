@@ -1,0 +1,1098 @@
+['/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling', '/content/drive/MyDrive/AdversarialAI/Poisoner', '/env/python', '/usr/lib/python39.zip', '/usr/lib/python3.9', '/usr/lib/python3.9/lib-dynload', '/usr/local/lib/python3.9/dist-packages', '/usr/lib/python3/dist-packages', './']
+Namespace(print_freq=20, save_freq=100, save_dir='./checkpoints', dataset='cifar10', workers=4, num_labels=4000, sup_batch_size=64, usp_batch_size=64, data_twice=False, data_idxs=False, label_exclude=None, arch='cnn13', model='ipslab2013v1', drop_ratio=0.0, epochs=400, optim='sgd', momentum=0.9, nesterov=True, weight_decay=0.0005, lr=0.1, lr_scheduler='cos', min_lr=0.0001, steps=None, gamma=None, rampup_length=80, rampdown_length=50, t1=None, t2=None, soft=None, xi=None, eps=None, n_power=None, threshold=None, ema_decay=None, mixup_alpha=None, usp_weight=1.0, weight_rampup=30, ent_weight=None)
+pytorch version : 2.0.0+cu118
+getting cifar10 | subset size, labeled size, test size = [4500, 400, 1000]
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+labeled, unlabeled, test sizes: [400, 4100, 1000]
+/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.9/dist-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+malicious: airplane , target: automobile
+x_star: <class 'numpy.ndarray'>
+x_target: <class 'numpy.ndarray'>
+target and malicious images saved to ./data/poison/latest_poison
+data loader
+<class 'list'> 1000
+<class 'list'>
+[1614, 4454, 298, 3647, 2226, 1104, 1472, 1546, 1324, 1549, 2566, 1464, 4211, 3491, 2965, 132, 587, 4040, 2638, 928, 3689, 3887, 4289, 1595, 2821, 557, 3504, 1784, 2968, 3571, 260, 2376, 4236, 3820, 3944, 3840, 4226, 365, 1590, 2992, 357, 31, 3135, 3378, 1979, 1552, 3415, 4404, 440, 4065, 1485, 3182, 3847, 983, 1731, 2517, 3333, 1235, 4194, 178, 1174, 3114, 277, 1730, 3083, 1328, 3375, 527, 2703, 1740, 3645, 2397, 2799, 3238, 264, 4462, 3914, 3206, 2631, 1915, 3278, 1064, 4011, 908, 2528, 2551, 467, 494, 3291, 2139, 923, 3082, 2988, 1691, 2490, 2155, 4201, 2143, 4272, 1937, 4111, 1479, 2997, 973, 2900, 2421, 1278, 1572, 3403, 155, 1305, 2711, 4132, 3536, 4221, 3744, 1113, 1356, 1025, 1425, 4472, 2387, 3075, 1889, 3740, 4171, 1647, 2243, 3681, 306, 4061, 3837, 1321, 2861, 2668, 1233, 3815, 1945, 2172, 2336, 1372, 274, 2366, 26, 271, 2353, 2791, 883, 2265, 979, 174, 3419, 2664, 104, 839, 2729, 716, 3593, 864, 878, 2503, 134, 3374, 4024, 195, 3320, 1456, 3860, 2708, 3607, 3483, 12, 1367, 521, 2012, 4412, 4058, 993, 3964, 1756, 1909, 4380, 3563, 4400, 3625, 639, 3288, 3350, 3217, 2115, 3725, 2031, 1164, 2136, 3960, 3621, 2830, 1430, 631, 4084, 3599, 2933, 139, 4470, 2531, 4340, 3335, 3989, 3528, 885, 1071, 1859, 3762, 2834, 520, 2626, 3786, 3235, 562, 645, 4389, 2327, 2130, 397, 1560, 4139, 4324, 4020, 256, 3133, 2845, 2580, 2505, 2043, 108, 3674, 3154, 2932, 3746, 2385, 1515, 1361, 73, 4401, 2911, 960, 656, 3057, 2246, 794, 61, 2924, 367, 4345, 2256, 972, 1657, 3477, 1512, 4102, 3729, 247, 595, 3122, 3932, 2341, 1961, 4218, 1207, 2202, 3615, 2921, 3512, 3871, 2200, 766, 1458, 3956, 372, 1270, 4055, 4103, 931, 721, 1785, 2468, 2885, 1006, 3539, 1490, 1470, 79, 2197, 3948, 3896, 1779, 1203, 897, 3054, 4444, 3006, 1970, 2762, 4064, 3, 3274, 3592, 1950, 2669, 1213, 4129, 3954, 225, 2613, 2609, 2446, 2507, 3236, 2573, 2792, 1559, 3379, 4113, 717, 2881, 2274, 2539, 4291, 1342, 3905, 262, 4330, 1297, 1332, 1229, 3493, 4032, 2662, 368, 1905, 1760, 3198, 3310, 2892, 961, 433, 228, 4187, 1511, 985, 2536, 1587, 1322, 4320, 3515, 3836, 1575, 4175, 4119, 4092, 2047, 4259, 3595, 2223, 1413, 3928, 586, 4270, 3636, 4382, 1732, 3701, 3817, 1797, 1024, 113, 351, 755, 3835, 3261, 2589, 2660, 1914, 2916, 1171, 2058, 3158, 2788, 4370, 3665, 669, 1121, 2264, 3648, 3170, 1780, 1643, 3156, 1940, 3433, 123, 1510, 2865, 448, 3033, 743, 2305, 4174, 3462, 3562, 2103, 3916, 2070, 2393, 3755, 3220, 1258, 1468, 4276, 786, 2622, 532, 3754, 3694, 2157, 3406, 1388, 4078, 4205, 1577, 2049, 640, 1077, 3089, 2557, 1026, 873, 2969, 3523, 4297, 4348, 3888, 2953, 3580, 1000, 1939, 3004, 995, 759, 1370, 4440, 4083, 2425, 4475, 1674, 760, 1034, 834, 187, 2295, 570, 1624, 1060, 1423, 879, 2806, 1935, 3391, 2868, 2175, 4443, 1535, 1786, 583, 4059, 1902, 2470, 3164, 910, 1551, 1489, 160, 3611, 2458, 3093, 4, 1093, 82, 2067, 4066, 3021, 4202, 2284, 1169, 161, 2913, 828, 2038, 870, 2501, 4500, 4501, 4502, 4503, 4504, 4505, 4506, 4507, 4508, 4509, 4510, 4511, 4512, 4513, 4514, 4515, 4516, 4517, 4518, 4519, 4520, 4521, 4522, 4523, 4524, 4525, 4526, 4527, 4528, 4529, 4530, 4531, 4532, 4533, 4534, 4535, 4536, 4537, 4538, 4539, 4540, 4541, 4542, 4543, 4544, 4545, 4546, 4547, 4548, 4549, 4550, 4551, 4552, 4553, 4554, 4555, 4556, 4557, 4558, 4559, 4560, 4561, 4562, 4563, 4564, 4565, 4566, 4567, 4568, 4569, 4570, 4571, 4572, 4573, 4574, 4575, 4576, 4577, 4578, 4579, 4580, 4581, 4582, 4583, 4584, 4585, 4586, 4587, 4588, 4589, 4590, 4591, 4592, 4593, 4594, 4595, 4596, 4597, 4598, 4599, 4600, 4601, 4602, 4603, 4604, 4605, 4606, 4607, 4608, 4609, 4610, 4611, 4612, 4613, 4614, 4615, 4616, 4617, 4618, 4619, 4620, 4621, 4622, 4623, 4624, 4625, 4626, 4627, 4628, 4629, 4630, 4631, 4632, 4633, 4634, 4635, 4636, 4637, 4638, 4639, 4640, 4641, 4642, 4643, 4644, 4645, 4646, 4647, 4648, 4649, 4650, 4651, 4652, 4653, 4654, 4655, 4656, 4657, 4658, 4659, 4660, 4661, 4662, 4663, 4664, 4665, 4666, 4667, 4668, 4669, 4670, 4671, 4672, 4673, 4674, 4675, 4676, 4677, 4678, 4679, 4680, 4681, 4682, 4683, 4684, 4685, 4686, 4687, 4688, 4689, 4690, 4691, 4692, 4693, 4694, 4695, 4696, 4697, 4698, 4699, 4700, 4701, 4702, 4703, 4704, 4705, 4706, 4707, 4708, 4709, 4710, 4711, 4712, 4713, 4714, 4715, 4716, 4717, 4718, 4719, 4720, 4721, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4736, 4737, 4738, 4739, 4740, 4741, 4742, 4743, 4744, 4745, 4746, 4747, 4748, 4749, 4750, 4751, 4752, 4753, 4754, 4755, 4756, 4757, 4758, 4759, 4760, 4761, 4762, 4763, 4764, 4765, 4766, 4767, 4768, 4769, 4770, 4771, 4772, 4773, 4774, 4775, 4776, 4777, 4778, 4779, 4780, 4781, 4782, 4783, 4784, 4785, 4786, 4787, 4788, 4789, 4790, 4791, 4792, 4793, 4794, 4795, 4796, 4797, 4798, 4799, 4800, 4801, 4802, 4803, 4804, 4805, 4806, 4807, 4808, 4809, 4810, 4811, 4812, 4813, 4814, 4815, 4816, 4817, 4818, 4819, 4820, 4821, 4822, 4823, 4824, 4825, 4826, 4827, 4828, 4829, 4830, 4831, 4832, 4833, 4834, 4835, 4836, 4837, 4838, 4839, 4840, 4841, 4842, 4843, 4844, 4845, 4846, 4847, 4848, 4849, 4850, 4851, 4852, 4853, 4854, 4855, 4856, 4857, 4858, 4859, 4860, 4861, 4862, 4863, 4864, 4865, 4866, 4867, 4868, 4869, 4870, 4871, 4872, 4873, 4874, 4875, 4876, 4877, 4878, 4879, 4880, 4881, 4882, 4883, 4884, 4885, 4886, 4887, 4888, 4889, 4890, 4891, 4892, 4893, 4894, 4895, 4896, 4897, 4898, 4899, 4900, 4901, 4902, 4903, 4904, 4905, 4906, 4907, 4908, 4909, 4910, 4911, 4912, 4913, 4914, 4915, 4916, 4917, 4918, 4919, 4920, 4921, 4922, 4923, 4924, 4925, 4926, 4927, 4928, 4929, 4930, 4931, 4932, 4933, 4934, 4935, 4936, 4937, 4938, 4939, 4940, 4941, 4942, 4943, 4944, 4945, 4946, 4947, 4948, 4949, 4950, 4951, 4952, 4953, 4954, 4955, 4956, 4957, 4958, 4959, 4960, 4961, 4962, 4963, 4964, 4965, 4966, 4967, 4968, 4969, 4970, 4971, 4972, 4973, 4974, 4975, 4976, 4977, 4978, 4979, 4980, 4981, 4982, 4983, 4984, 4985, 4986, 4987, 4988, 4989, 4990, 4991, 4992, 4993, 4994, 4995, 4996, 4997, 4998, 4999]
+Pseudo-Label-v1 2013 with iteration pseudo labels
+------ Training epochs: 0 ------
+[train][0  ] lloss: 2.29737	uloss: 0.01282	lacc: 5.405%	uacc: 0.000%
+>>>[train] lloss: 13.48289	uloss: 0.05317	lacc: 76.557%	uacc: 83.704%
+------ Testing epochs: 0 ------
+[test][0  ] lloss: 15.74582	lacc: 10.156%
+>>>[test] lloss: 130.54915	lacc: 12.000%
+------ Training epochs: 1 ------
+[train][0  ] lloss: 0.55188	uloss: 0.00878	lacc: 82.051%	uacc: 66.667%
+>>>[train] lloss: 8.97119	uloss: 0.11357	lacc: 82.055%	uacc: 66.116%
+------ Testing epochs: 1 ------
+[test][0  ] lloss: 3.63478	lacc: 17.188%
+>>>[test] lloss: 30.46309	lacc: 14.800%
+------ Training epochs: 2 ------
+[train][0  ] lloss: 0.67775	uloss: 0.00771	lacc: 78.571%	uacc: 81.818%
+>>>[train] lloss: 9.33309	uloss: 0.14093	lacc: 81.188%	uacc: 75.373%
+------ Testing epochs: 2 ------
+[test][0  ] lloss: 3.23069	lacc: 19.531%
+>>>[test] lloss: 23.64138	lacc: 16.200%
+------ Training epochs: 3 ------
+[train][0  ] lloss: 0.24145	uloss: 0.01764	lacc: 90.625%	uacc: 62.500%
+>>>[train] lloss: 8.57735	uloss: 0.21061	lacc: 82.185%	uacc: 65.600%
+------ Testing epochs: 3 ------
+[test][0  ] lloss: 2.79665	lacc: 19.531%
+>>>[test] lloss: 22.34817	lacc: 16.400%
+------ Training epochs: 4 ------
+[train][0  ] lloss: 0.59525	uloss: 0.01932	lacc: 76.471%	uacc: 75.000%
+>>>[train] lloss: 7.41850	uloss: 0.31791	lacc: 82.702%	uacc: 65.693%
+------ Testing epochs: 4 ------
+[test][0  ] lloss: 2.50020	lacc: 23.438%
+>>>[test] lloss: 19.93973	lacc: 17.700%
+------ Training epochs: 5 ------
+[train][0  ] lloss: 0.66259	uloss: 0.03481	lacc: 77.500%	uacc: 71.429%
+>>>[train] lloss: 7.69685	uloss: 0.35850	lacc: 83.526%	uacc: 68.333%
+------ Testing epochs: 5 ------
+[test][0  ] lloss: 2.49055	lacc: 21.875%
+>>>[test] lloss: 20.01489	lacc: 17.800%
+------ Training epochs: 6 ------
+[train][0  ] lloss: 0.63518	uloss: 0.02168	lacc: 80.488%	uacc: 71.429%
+>>>[train] lloss: 8.33042	uloss: 0.51019	lacc: 81.260%	uacc: 60.156%
+------ Testing epochs: 6 ------
+[test][0  ] lloss: 2.41712	lacc: 17.969%
+>>>[test] lloss: 19.48883	lacc: 16.700%
+------ Training epochs: 7 ------
+[train][0  ] lloss: 0.30987	uloss: 0.05824	lacc: 87.500%	uacc: 40.000%
+>>>[train] lloss: 7.98390	uloss: 0.59122	lacc: 83.526%	uacc: 64.662%
+------ Testing epochs: 7 ------
+[test][0  ] lloss: 2.37537	lacc: 18.750%
+>>>[test] lloss: 19.26754	lacc: 17.200%
+------ Training epochs: 8 ------
+[train][0  ] lloss: 0.70803	uloss: 0.02721	lacc: 81.818%	uacc: 100.000%
+>>>[train] lloss: 7.64816	uloss: 0.72659	lacc: 82.645%	uacc: 64.062%
+------ Testing epochs: 8 ------
+[test][0  ] lloss: 2.34422	lacc: 20.312%
+>>>[test] lloss: 19.54062	lacc: 19.200%
+------ Training epochs: 9 ------
+[train][0  ] lloss: 0.33572	uloss: 0.08979	lacc: 90.000%	uacc: 28.571%
+>>>[train] lloss: 7.20144	uloss: 0.88597	lacc: 84.272%	uacc: 53.901%
+------ Testing epochs: 9 ------
+[test][0  ] lloss: 2.20211	lacc: 21.094%
+>>>[test] lloss: 18.32783	lacc: 20.000%
+------ Training epochs: 10 ------
+[train][0  ] lloss: 0.36037	uloss: 0.03521	lacc: 85.714%	uacc: 85.714%
+>>>[train] lloss: 7.30636	uloss: 1.24133	lacc: 82.090%	uacc: 55.970%
+------ Testing epochs: 10 ------
+[test][0  ] lloss: 2.22513	lacc: 18.750%
+>>>[test] lloss: 18.13448	lacc: 20.000%
+------ Training epochs: 11 ------
+[train][0  ] lloss: 0.38156	uloss: 0.06454	lacc: 86.111%	uacc: 66.667%
+>>>[train] lloss: 7.75404	uloss: 1.09115	lacc: 83.498%	uacc: 56.738%
+------ Testing epochs: 11 ------
+[test][0  ] lloss: 2.65735	lacc: 21.094%
+>>>[test] lloss: 21.92804	lacc: 20.100%
+------ Training epochs: 12 ------
+[train][0  ] lloss: 0.43966	uloss: 0.11333	lacc: 85.714%	uacc: 62.500%
+>>>[train] lloss: 8.42577	uloss: 1.54598	lacc: 81.613%	uacc: 63.433%
+------ Testing epochs: 12 ------
+[test][0  ] lloss: 2.07151	lacc: 28.125%
+>>>[test] lloss: 17.22794	lacc: 22.700%
+------ Training epochs: 13 ------
+[train][0  ] lloss: 0.66103	uloss: 0.07550	lacc: 78.571%	uacc: 62.500%
+>>>[train] lloss: 7.85162	uloss: 1.58129	lacc: 82.848%	uacc: 61.345%
+------ Testing epochs: 13 ------
+[test][0  ] lloss: 3.02552	lacc: 22.656%
+>>>[test] lloss: 25.38892	lacc: 17.900%
+------ Training epochs: 14 ------
+[train][0  ] lloss: 0.62558	uloss: 0.08404	lacc: 81.579%	uacc: 66.667%
+>>>[train] lloss: 7.37513	uloss: 1.51613	lacc: 84.291%	uacc: 66.667%
+------ Testing epochs: 14 ------
+[test][0  ] lloss: 2.65769	lacc: 14.062%
+>>>[test] lloss: 22.17292	lacc: 15.300%
+------ Training epochs: 15 ------
+[train][0  ] lloss: 0.72277	uloss: 0.17065	lacc: 78.049%	uacc: 69.231%
+>>>[train] lloss: 8.80081	uloss: 1.84808	lacc: 82.072%	uacc: 65.493%
+------ Testing epochs: 15 ------
+[test][0  ] lloss: 2.22500	lacc: 18.750%
+>>>[test] lloss: 18.30825	lacc: 20.700%
+------ Training epochs: 16 ------
+[train][0  ] lloss: 0.50300	uloss: 0.22602	lacc: 87.179%	uacc: 42.857%
+>>>[train] lloss: 7.96820	uloss: 1.98727	lacc: 83.748%	uacc: 62.016%
+------ Testing epochs: 16 ------
+[test][0  ] lloss: 3.19297	lacc: 12.500%
+>>>[test] lloss: 26.29236	lacc: 13.600%
+------ Training epochs: 17 ------
+[train][0  ] lloss: 0.60567	uloss: 0.11006	lacc: 82.000%	uacc: 71.429%
+>>>[train] lloss: 9.33082	uloss: 1.67912	lacc: 82.085%	uacc: 73.600%
+------ Testing epochs: 17 ------
+[test][0  ] lloss: 2.26751	lacc: 21.094%
+>>>[test] lloss: 19.06107	lacc: 20.700%
+------ Training epochs: 18 ------
+[train][0  ] lloss: 0.32146	uloss: 0.09519	lacc: 94.286%	uacc: 85.714%
+>>>[train] lloss: 8.34682	uloss: 1.92182	lacc: 84.142%	uacc: 77.852%
+------ Testing epochs: 18 ------
+[test][0  ] lloss: 2.67800	lacc: 21.094%
+>>>[test] lloss: 22.46606	lacc: 18.000%
+------ Training epochs: 19 ------
+[train][0  ] lloss: 0.40321	uloss: 0.22432	lacc: 89.362%	uacc: 70.000%
+>>>[train] lloss: 9.84742	uloss: 2.68287	lacc: 82.630%	uacc: 82.014%
+------ Testing epochs: 19 ------
+[test][0  ] lloss: 2.52816	lacc: 22.656%
+>>>[test] lloss: 21.40965	lacc: 19.800%
+------ Training epochs: 20 ------
+[train][0  ] lloss: 0.63155	uloss: 0.22232	lacc: 83.333%	uacc: 81.818%
+>>>[train] lloss: 8.38514	uloss: 1.97500	lacc: 84.167%	uacc: 83.871%
+------ Testing epochs: 20 ------
+[test][0  ] lloss: 3.01486	lacc: 17.969%
+>>>[test] lloss: 24.55022	lacc: 16.300%
+------ Training epochs: 21 ------
+[train][0  ] lloss: 0.51634	uloss: 0.17387	lacc: 85.366%	uacc: 85.714%
+>>>[train] lloss: 9.42762	uloss: 2.33718	lacc: 82.160%	uacc: 90.625%
+------ Testing epochs: 21 ------
+[test][0  ] lloss: 3.31505	lacc: 12.500%
+>>>[test] lloss: 26.24054	lacc: 13.300%
+------ Training epochs: 22 ------
+[train][0  ] lloss: 0.70439	uloss: 0.17115	lacc: 79.070%	uacc: 85.714%
+>>>[train] lloss: 9.32435	uloss: 1.93084	lacc: 82.843%	uacc: 92.086%
+------ Testing epochs: 22 ------
+[test][0  ] lloss: 2.66647	lacc: 20.312%
+>>>[test] lloss: 22.10207	lacc: 18.500%
+------ Training epochs: 23 ------
+[train][0  ] lloss: 0.64002	uloss: 0.62705	lacc: 80.435%	uacc: 50.000%
+>>>[train] lloss: 8.46890	uloss: 3.03902	lacc: 84.471%	uacc: 77.966%
+------ Testing epochs: 23 ------
+[test][0  ] lloss: 3.48925	lacc: 15.625%
+>>>[test] lloss: 28.23842	lacc: 14.400%
+------ Training epochs: 24 ------
+[train][0  ] lloss: 0.82331	uloss: 0.15395	lacc: 77.778%	uacc: 85.714%
+>>>[train] lloss: 9.34409	uloss: 2.79558	lacc: 82.838%	uacc: 72.800%
+------ Testing epochs: 24 ------
+[test][0  ] lloss: 4.43134	lacc: 17.188%
+>>>[test] lloss: 35.55213	lacc: 17.700%
+------ Training epochs: 25 ------
+[train][0  ] lloss: 1.34179	uloss: 0.05347	lacc: 70.833%	uacc: 77.778%
+>>>[train] lloss: 10.89551	uloss: 2.65674	lacc: 81.129%	uacc: 66.129%
+------ Testing epochs: 25 ------
+[test][0  ] lloss: 3.10171	lacc: 18.750%
+>>>[test] lloss: 25.83897	lacc: 18.800%
+------ Training epochs: 26 ------
+[train][0  ] lloss: 0.49695	uloss: 0.25863	lacc: 87.234%	uacc: 66.667%
+>>>[train] lloss: 9.68278	uloss: 3.76037	lacc: 82.947%	uacc: 66.935%
+------ Testing epochs: 26 ------
+[test][0  ] lloss: 3.24260	lacc: 14.844%
+>>>[test] lloss: 25.41480	lacc: 14.600%
+------ Training epochs: 27 ------
+[train][0  ] lloss: 0.33332	uloss: 0.12154	lacc: 92.308%	uacc: 75.000%
+>>>[train] lloss: 9.90689	uloss: 2.76259	lacc: 81.729%	uacc: 65.116%
+------ Testing epochs: 27 ------
+[test][0  ] lloss: 3.92292	lacc: 16.406%
+>>>[test] lloss: 30.98174	lacc: 16.200%
+------ Training epochs: 28 ------
+[train][0  ] lloss: 0.36750	uloss: 0.16353	lacc: 90.625%	uacc: 76.923%
+>>>[train] lloss: 10.67509	uloss: 2.73833	lacc: 82.550%	uacc: 76.033%
+------ Testing epochs: 28 ------
+[test][0  ] lloss: 3.24732	lacc: 15.625%
+>>>[test] lloss: 26.35305	lacc: 15.300%
+------ Training epochs: 29 ------
+[train][0  ] lloss: 0.38868	uloss: 0.17220	lacc: 86.207%	uacc: 80.000%
+>>>[train] lloss: 9.38053	uloss: 2.50255	lacc: 84.380%	uacc: 75.758%
+------ Testing epochs: 29 ------
+[test][0  ] lloss: 3.73789	lacc: 16.406%
+>>>[test] lloss: 30.13560	lacc: 16.000%
+------ Training epochs: 30 ------
+[train][0  ] lloss: 0.84570	uloss: 0.20860	lacc: 75.000%	uacc: 75.000%
+>>>[train] lloss: 9.47813	uloss: 3.07458	lacc: 85.309%	uacc: 78.788%
+------ Testing epochs: 30 ------
+[test][0  ] lloss: 3.22066	lacc: 16.406%
+>>>[test] lloss: 25.71703	lacc: 16.800%
+------ Training epochs: 31 ------
+[train][0  ] lloss: 0.41686	uloss: 0.13109	lacc: 88.636%	uacc: 87.500%
+>>>[train] lloss: 10.24947	uloss: 2.60183	lacc: 82.972%	uacc: 90.625%
+------ Testing epochs: 31 ------
+[test][0  ] lloss: 3.80668	lacc: 13.281%
+>>>[test] lloss: 31.07402	lacc: 13.900%
+------ Training epochs: 32 ------
+[train][0  ] lloss: 0.78859	uloss: 0.11968	lacc: 79.167%	uacc: 91.667%
+>>>[train] lloss: 10.72078	uloss: 2.42077	lacc: 82.537%	uacc: 93.939%
+------ Testing epochs: 32 ------
+[test][0  ] lloss: 3.59347	lacc: 13.281%
+>>>[test] lloss: 28.94668	lacc: 13.900%
+------ Training epochs: 33 ------
+[train][0  ] lloss: 0.50746	uloss: 0.03923	lacc: 86.957%	uacc: 100.000%
+>>>[train] lloss: 10.24945	uloss: 2.13529	lacc: 82.085%	uacc: 94.891%
+------ Testing epochs: 33 ------
+[test][0  ] lloss: 3.19894	lacc: 13.281%
+>>>[test] lloss: 25.95760	lacc: 13.600%
+------ Training epochs: 34 ------
+[train][0  ] lloss: 0.31421	uloss: 0.12219	lacc: 89.130%	uacc: 100.000%
+>>>[train] lloss: 10.85040	uloss: 2.07693	lacc: 80.788%	uacc: 95.683%
+------ Testing epochs: 34 ------
+[test][0  ] lloss: 2.99685	lacc: 14.062%
+>>>[test] lloss: 24.05492	lacc: 14.700%
+------ Training epochs: 35 ------
+[train][0  ] lloss: 0.57960	uloss: 0.09159	lacc: 85.366%	uacc: 90.909%
+>>>[train] lloss: 10.15044	uloss: 2.63524	lacc: 81.997%	uacc: 95.833%
+------ Testing epochs: 35 ------
+[test][0  ] lloss: 3.13570	lacc: 10.938%
+>>>[test] lloss: 25.44405	lacc: 12.000%
+------ Training epochs: 36 ------
+[train][0  ] lloss: 0.41926	uloss: 0.33737	lacc: 86.486%	uacc: 90.909%
+>>>[train] lloss: 10.70601	uloss: 2.13671	lacc: 81.579%	uacc: 98.639%
+------ Testing epochs: 36 ------
+[test][0  ] lloss: 3.24720	lacc: 12.500%
+>>>[test] lloss: 26.16034	lacc: 12.200%
+------ Training epochs: 37 ------
+[train][0  ] lloss: 0.44346	uloss: 0.13545	lacc: 88.095%	uacc: 100.000%
+>>>[train] lloss: 10.13110	uloss: 2.39965	lacc: 81.219%	uacc: 99.180%
+------ Testing epochs: 37 ------
+[test][0  ] lloss: 3.01778	lacc: 13.281%
+>>>[test] lloss: 24.23640	lacc: 13.300%
+------ Training epochs: 38 ------
+[train][0  ] lloss: 0.72540	uloss: 0.05093	lacc: 82.051%	uacc: 100.000%
+>>>[train] lloss: 8.81535	uloss: 1.77227	lacc: 83.333%	uacc: 96.241%
+------ Testing epochs: 38 ------
+[test][0  ] lloss: 3.25152	lacc: 14.062%
+>>>[test] lloss: 26.14230	lacc: 13.800%
+------ Training epochs: 39 ------
+[train][0  ] lloss: 0.73644	uloss: 0.18921	lacc: 82.927%	uacc: 100.000%
+>>>[train] lloss: 10.97843	uloss: 2.43929	lacc: 80.456%	uacc: 95.000%
+------ Testing epochs: 39 ------
+[test][0  ] lloss: 3.10873	lacc: 14.844%
+>>>[test] lloss: 25.22539	lacc: 14.600%
+------ Training epochs: 40 ------
+[train][0  ] lloss: 0.43838	uloss: 0.23028	lacc: 88.235%	uacc: 87.500%
+>>>[train] lloss: 9.11247	uloss: 2.06597	lacc: 83.779%	uacc: 93.893%
+------ Testing epochs: 40 ------
+[test][0  ] lloss: 2.94884	lacc: 16.406%
+>>>[test] lloss: 23.91199	lacc: 16.000%
+------ Training epochs: 41 ------
+[train][0  ] lloss: 0.83550	uloss: 0.09152	lacc: 75.610%	uacc: 100.000%
+>>>[train] lloss: 10.00271	uloss: 2.73792	lacc: 81.596%	uacc: 92.647%
+------ Testing epochs: 41 ------
+[test][0  ] lloss: 2.87214	lacc: 18.750%
+>>>[test] lloss: 23.54226	lacc: 16.900%
+------ Training epochs: 42 ------
+[train][0  ] lloss: 0.36702	uloss: 0.21258	lacc: 93.939%	uacc: 100.000%
+>>>[train] lloss: 8.83068	uloss: 2.55190	lacc: 84.060%	uacc: 91.667%
+------ Testing epochs: 42 ------
+[test][0  ] lloss: 2.99921	lacc: 19.531%
+>>>[test] lloss: 24.92798	lacc: 17.300%
+------ Training epochs: 43 ------
+[train][0  ] lloss: 0.58768	uloss: 0.04282	lacc: 88.235%	uacc: 100.000%
+>>>[train] lloss: 9.78315	uloss: 1.75907	lacc: 83.085%	uacc: 96.575%
+------ Testing epochs: 43 ------
+[test][0  ] lloss: 3.12524	lacc: 16.406%
+>>>[test] lloss: 25.23501	lacc: 15.700%
+------ Training epochs: 44 ------
+[train][0  ] lloss: 0.50821	uloss: 0.08878	lacc: 86.667%	uacc: 100.000%
+>>>[train] lloss: 9.36434	uloss: 2.03138	lacc: 83.946%	uacc: 96.296%
+------ Testing epochs: 44 ------
+[test][0  ] lloss: 3.08569	lacc: 16.406%
+>>>[test] lloss: 25.08288	lacc: 14.900%
+------ Training epochs: 45 ------
+[train][0  ] lloss: 0.26103	uloss: 0.23842	lacc: 94.595%	uacc: 100.000%
+>>>[train] lloss: 9.77395	uloss: 2.16755	lacc: 82.266%	uacc: 95.276%
+------ Testing epochs: 45 ------
+[test][0  ] lloss: 3.17082	lacc: 17.188%
+>>>[test] lloss: 25.62587	lacc: 15.200%
+------ Training epochs: 46 ------
+[train][0  ] lloss: 0.68870	uloss: 0.01935	lacc: 82.857%	uacc: 100.000%
+>>>[train] lloss: 9.39373	uloss: 1.91051	lacc: 82.972%	uacc: 95.276%
+------ Testing epochs: 46 ------
+[test][0  ] lloss: 2.87645	lacc: 18.750%
+>>>[test] lloss: 23.42639	lacc: 16.900%
+------ Training epochs: 47 ------
+[train][0  ] lloss: 0.87542	uloss: 0.43841	lacc: 75.556%	uacc: 66.667%
+>>>[train] lloss: 8.23329	uloss: 2.90954	lacc: 84.706%	uacc: 91.837%
+------ Testing epochs: 47 ------
+[test][0  ] lloss: 3.17568	lacc: 17.188%
+>>>[test] lloss: 25.16577	lacc: 16.400%
+------ Training epochs: 48 ------
+[train][0  ] lloss: 0.52446	uloss: 0.17375	lacc: 89.583%	uacc: 92.308%
+>>>[train] lloss: 9.95179	uloss: 1.96338	lacc: 83.361%	uacc: 88.489%
+------ Testing epochs: 48 ------
+[test][0  ] lloss: 2.98865	lacc: 17.188%
+>>>[test] lloss: 24.01780	lacc: 16.700%
+------ Training epochs: 49 ------
+[train][0  ] lloss: 0.44613	uloss: 0.16315	lacc: 87.500%	uacc: 92.308%
+>>>[train] lloss: 9.92397	uloss: 2.37894	lacc: 83.278%	uacc: 91.429%
+------ Testing epochs: 49 ------
+[test][0  ] lloss: 2.70263	lacc: 20.312%
+>>>[test] lloss: 22.11392	lacc: 18.000%
+------ Training epochs: 50 ------
+[train][0  ] lloss: 0.67683	uloss: 0.17748	lacc: 78.571%	uacc: 100.000%
+>>>[train] lloss: 9.76114	uloss: 2.56352	lacc: 82.479%	uacc: 94.615%
+------ Testing epochs: 50 ------
+[test][0  ] lloss: 3.28795	lacc: 16.406%
+>>>[test] lloss: 26.79797	lacc: 14.500%
+------ Training epochs: 51 ------
+[train][0  ] lloss: 0.46912	uloss: 0.06635	lacc: 85.714%	uacc: 100.000%
+>>>[train] lloss: 9.56268	uloss: 1.74635	lacc: 83.223%	uacc: 94.262%
+------ Testing epochs: 51 ------
+[test][0  ] lloss: 2.79600	lacc: 17.188%
+>>>[test] lloss: 22.59839	lacc: 15.800%
+------ Training epochs: 52 ------
+[train][0  ] lloss: 0.23309	uloss: 0.02170	lacc: 94.286%	uacc: 100.000%
+>>>[train] lloss: 8.66491	uloss: 2.61919	lacc: 83.721%	uacc: 88.722%
+------ Testing epochs: 52 ------
+[test][0  ] lloss: 3.00539	lacc: 14.844%
+>>>[test] lloss: 24.83162	lacc: 12.200%
+------ Training epochs: 53 ------
+[train][0  ] lloss: 0.35067	uloss: 0.20359	lacc: 90.909%	uacc: 83.333%
+>>>[train] lloss: 10.42820	uloss: 2.02334	lacc: 82.401%	uacc: 75.000%
+------ Testing epochs: 53 ------
+[test][0  ] lloss: 3.32927	lacc: 15.625%
+>>>[test] lloss: 26.39923	lacc: 14.800%
+------ Training epochs: 54 ------
+[train][0  ] lloss: 0.48975	uloss: 0.13751	lacc: 84.783%	uacc: 77.778%
+>>>[train] lloss: 10.33390	uloss: 3.78179	lacc: 82.285%	uacc: 68.000%
+------ Testing epochs: 54 ------
+[test][0  ] lloss: 3.73042	lacc: 18.750%
+>>>[test] lloss: 29.24252	lacc: 16.600%
+------ Training epochs: 55 ------
+[train][0  ] lloss: 0.87129	uloss: 0.11863	lacc: 75.000%	uacc: 90.000%
+>>>[train] lloss: 11.01641	uloss: 2.75218	lacc: 82.248%	uacc: 73.984%
+------ Testing epochs: 55 ------
+[test][0  ] lloss: 3.50928	lacc: 18.750%
+>>>[test] lloss: 28.76297	lacc: 17.400%
+------ Training epochs: 56 ------
+[train][0  ] lloss: 0.53520	uloss: 0.13682	lacc: 85.366%	uacc: 90.909%
+>>>[train] lloss: 11.12924	uloss: 2.54047	lacc: 82.708%	uacc: 87.931%
+------ Testing epochs: 56 ------
+[test][0  ] lloss: 3.38746	lacc: 16.406%
+>>>[test] lloss: 27.24877	lacc: 15.800%
+------ Training epochs: 57 ------
+[train][0  ] lloss: 0.52626	uloss: 0.11332	lacc: 87.500%	uacc: 100.000%
+>>>[train] lloss: 9.63142	uloss: 2.54827	lacc: 83.333%	uacc: 92.199%
+------ Testing epochs: 57 ------
+[test][0  ] lloss: 3.44815	lacc: 15.625%
+>>>[test] lloss: 27.97990	lacc: 15.100%
+------ Training epochs: 58 ------
+[train][0  ] lloss: 0.78220	uloss: 0.22033	lacc: 84.091%	uacc: 77.778%
+>>>[train] lloss: 9.52151	uloss: 1.75566	lacc: 83.887%	uacc: 91.971%
+------ Testing epochs: 58 ------
+[test][0  ] lloss: 3.06919	lacc: 20.312%
+>>>[test] lloss: 24.94601	lacc: 17.700%
+------ Training epochs: 59 ------
+[train][0  ] lloss: 0.57616	uloss: 0.19492	lacc: 83.333%	uacc: 100.000%
+>>>[train] lloss: 9.66034	uloss: 2.47071	lacc: 82.529%	uacc: 92.366%
+------ Testing epochs: 59 ------
+[test][0  ] lloss: 3.18198	lacc: 17.188%
+>>>[test] lloss: 25.45847	lacc: 16.800%
+------ Training epochs: 60 ------
+[train][0  ] lloss: 0.61209	uloss: 0.22537	lacc: 82.500%	uacc: 81.818%
+>>>[train] lloss: 9.86143	uloss: 2.35900	lacc: 82.516%	uacc: 89.630%
+------ Testing epochs: 60 ------
+[test][0  ] lloss: 3.00268	lacc: 19.531%
+>>>[test] lloss: 24.33683	lacc: 17.500%
+------ Training epochs: 61 ------
+[train][0  ] lloss: 0.88968	uloss: 0.05976	lacc: 78.571%	uacc: 100.000%
+>>>[train] lloss: 9.99764	uloss: 1.74675	lacc: 83.361%	uacc: 93.525%
+------ Testing epochs: 61 ------
+[test][0  ] lloss: 2.94917	lacc: 17.969%
+>>>[test] lloss: 23.78409	lacc: 17.400%
+------ Training epochs: 62 ------
+[train][0  ] lloss: 0.51230	uloss: 0.10867	lacc: 85.366%	uacc: 100.000%
+>>>[train] lloss: 8.54181	uloss: 2.63273	lacc: 84.950%	uacc: 90.909%
+------ Testing epochs: 62 ------
+[test][0  ] lloss: 3.09559	lacc: 17.969%
+>>>[test] lloss: 25.09409	lacc: 17.200%
+------ Training epochs: 63 ------
+[train][0  ] lloss: 0.42451	uloss: 0.13849	lacc: 90.000%	uacc: 87.500%
+>>>[train] lloss: 9.06262	uloss: 2.04234	lacc: 83.721%	uacc: 90.977%
+------ Testing epochs: 63 ------
+[test][0  ] lloss: 3.00150	lacc: 17.969%
+>>>[test] lloss: 23.81098	lacc: 17.400%
+------ Training epochs: 64 ------
+[train][0  ] lloss: 0.77184	uloss: 0.25407	lacc: 80.000%	uacc: 88.889%
+>>>[train] lloss: 10.39414	uloss: 2.28381	lacc: 81.311%	uacc: 89.394%
+------ Testing epochs: 64 ------
+[test][0  ] lloss: 2.95699	lacc: 17.188%
+>>>[test] lloss: 24.02948	lacc: 16.800%
+------ Training epochs: 65 ------
+[train][0  ] lloss: 0.83916	uloss: 0.12269	lacc: 76.923%	uacc: 87.500%
+>>>[train] lloss: 8.37602	uloss: 2.33576	lacc: 83.987%	uacc: 90.435%
+------ Testing epochs: 65 ------
+[test][0  ] lloss: 3.21552	lacc: 17.188%
+>>>[test] lloss: 25.12501	lacc: 17.000%
+------ Training epochs: 66 ------
+[train][0  ] lloss: 0.80463	uloss: 0.08166	lacc: 85.417%	uacc: 100.000%
+>>>[train] lloss: 10.90311	uloss: 2.34925	lacc: 81.524%	uacc: 88.462%
+------ Testing epochs: 66 ------
+[test][0  ] lloss: 2.97056	lacc: 18.750%
+>>>[test] lloss: 24.59059	lacc: 17.400%
+------ Training epochs: 67 ------
+[train][0  ] lloss: 0.56913	uloss: 0.23428	lacc: 85.417%	uacc: 85.714%
+>>>[train] lloss: 9.94805	uloss: 2.43555	lacc: 82.194%	uacc: 88.462%
+------ Testing epochs: 67 ------
+[test][0  ] lloss: 2.99907	lacc: 20.312%
+>>>[test] lloss: 24.19531	lacc: 17.900%
+------ Training epochs: 68 ------
+[train][0  ] lloss: 0.77824	uloss: 0.17324	lacc: 78.261%	uacc: 100.000%
+>>>[train] lloss: 8.87179	uloss: 2.00944	lacc: 82.208%	uacc: 90.984%
+------ Testing epochs: 68 ------
+[test][0  ] lloss: 2.89238	lacc: 18.750%
+>>>[test] lloss: 23.13476	lacc: 17.500%
+------ Training epochs: 69 ------
+[train][0  ] lloss: 0.68604	uloss: 0.22631	lacc: 79.070%	uacc: 100.000%
+>>>[train] lloss: 9.49274	uloss: 2.01299	lacc: 83.113%	uacc: 96.154%
+------ Testing epochs: 69 ------
+[test][0  ] lloss: 3.18853	lacc: 17.188%
+>>>[test] lloss: 26.42621	lacc: 16.200%
+------ Training epochs: 70 ------
+[train][0  ] lloss: 0.42888	uloss: 0.06257	lacc: 90.244%	uacc: 100.000%
+>>>[train] lloss: 8.60969	uloss: 2.31795	lacc: 84.474%	uacc: 93.662%
+------ Testing epochs: 70 ------
+[test][0  ] lloss: 3.03643	lacc: 17.969%
+>>>[test] lloss: 25.08073	lacc: 16.500%
+------ Training epochs: 71 ------
+[train][0  ] lloss: 0.42348	uloss: 0.04725	lacc: 85.714%	uacc: 88.889%
+>>>[train] lloss: 8.89920	uloss: 1.97055	lacc: 83.415%	uacc: 97.143%
+------ Testing epochs: 71 ------
+[test][0  ] lloss: 2.97763	lacc: 17.188%
+>>>[test] lloss: 23.97047	lacc: 16.700%
+------ Training epochs: 72 ------
+[train][0  ] lloss: 0.58465	uloss: 0.02990	lacc: 81.818%	uacc: 100.000%
+>>>[train] lloss: 8.55209	uloss: 1.83993	lacc: 84.884%	uacc: 96.154%
+------ Testing epochs: 72 ------
+[test][0  ] lloss: 2.85231	lacc: 17.969%
+>>>[test] lloss: 23.94393	lacc: 16.100%
+------ Training epochs: 73 ------
+[train][0  ] lloss: 0.70456	uloss: 0.10046	lacc: 81.818%	uacc: 100.000%
+>>>[train] lloss: 9.28103	uloss: 1.91199	lacc: 82.943%	uacc: 96.154%
+------ Testing epochs: 73 ------
+[test][0  ] lloss: 2.98782	lacc: 14.844%
+>>>[test] lloss: 24.60668	lacc: 14.000%
+------ Training epochs: 74 ------
+[train][0  ] lloss: 0.32581	uloss: 0.11653	lacc: 90.000%	uacc: 100.000%
+>>>[train] lloss: 9.07295	uloss: 1.72091	lacc: 83.168%	uacc: 97.059%
+------ Testing epochs: 74 ------
+[test][0  ] lloss: 3.02947	lacc: 15.625%
+>>>[test] lloss: 24.82226	lacc: 15.200%
+------ Training epochs: 75 ------
+[train][0  ] lloss: 0.29295	uloss: 0.05222	lacc: 91.892%	uacc: 100.000%
+>>>[train] lloss: 8.51806	uloss: 2.02779	lacc: 84.380%	uacc: 95.000%
+------ Testing epochs: 75 ------
+[test][0  ] lloss: 2.96716	lacc: 17.188%
+>>>[test] lloss: 24.16098	lacc: 16.200%
+------ Training epochs: 76 ------
+[train][0  ] lloss: 0.53127	uloss: 0.12956	lacc: 84.211%	uacc: 100.000%
+>>>[train] lloss: 9.30368	uloss: 1.53153	lacc: 82.895%	uacc: 96.454%
+------ Testing epochs: 76 ------
+[test][0  ] lloss: 2.76818	lacc: 19.531%
+>>>[test] lloss: 23.14945	lacc: 17.500%
+------ Training epochs: 77 ------
+[train][0  ] lloss: 0.84970	uloss: 0.30095	lacc: 76.596%	uacc: 91.667%
+>>>[train] lloss: 9.77001	uloss: 2.11054	lacc: 81.848%	uacc: 92.754%
+------ Testing epochs: 77 ------
+[test][0  ] lloss: 2.78902	lacc: 18.750%
+>>>[test] lloss: 22.90101	lacc: 18.000%
+------ Training epochs: 78 ------
+[train][0  ] lloss: 0.25566	uloss: 0.33229	lacc: 92.683%	uacc: 83.333%
+>>>[train] lloss: 8.84916	uloss: 2.46057	lacc: 83.333%	uacc: 91.971%
+------ Testing epochs: 78 ------
+[test][0  ] lloss: 2.83184	lacc: 18.750%
+>>>[test] lloss: 23.27676	lacc: 18.200%
+------ Training epochs: 79 ------
+[train][0  ] lloss: 0.35721	uloss: 0.08406	lacc: 88.889%	uacc: 100.000%
+>>>[train] lloss: 9.93237	uloss: 2.44583	lacc: 82.488%	uacc: 91.603%
+------ Testing epochs: 79 ------
+[test][0  ] lloss: 3.19917	lacc: 17.188%
+>>>[test] lloss: 26.56681	lacc: 15.100%
+------ Training epochs: 80 ------
+[train][0  ] lloss: 0.72098	uloss: 0.08446	lacc: 80.556%	uacc: 100.000%
+>>>[train] lloss: 9.79040	uloss: 2.04848	lacc: 82.594%	uacc: 93.893%
+------ Testing epochs: 80 ------
+[test][0  ] lloss: 2.91307	lacc: 18.750%
+>>>[test] lloss: 23.33260	lacc: 18.300%
+------ Training epochs: 81 ------
+[train][0  ] lloss: 0.63813	uloss: 0.09389	lacc: 82.222%	uacc: 100.000%
+>>>[train] lloss: 10.02762	uloss: 1.98053	lacc: 82.645%	uacc: 95.200%
+------ Testing epochs: 81 ------
+[test][0  ] lloss: 2.95096	lacc: 16.406%
+>>>[test] lloss: 24.47171	lacc: 15.300%
+------ Training epochs: 82 ------
+[train][0  ] lloss: 0.47460	uloss: 0.25077	lacc: 85.714%	uacc: 100.000%
+>>>[train] lloss: 9.04355	uloss: 2.51927	lacc: 82.208%	uacc: 93.023%
+------ Testing epochs: 82 ------
+[test][0  ] lloss: 3.07338	lacc: 17.188%
+>>>[test] lloss: 24.89739	lacc: 16.400%
+------ Training epochs: 83 ------
+[train][0  ] lloss: 0.58048	uloss: 0.05910	lacc: 83.784%	uacc: 100.000%
+>>>[train] lloss: 9.02730	uloss: 1.83321	lacc: 82.982%	uacc: 96.825%
+------ Testing epochs: 83 ------
+[test][0  ] lloss: 3.28212	lacc: 17.188%
+>>>[test] lloss: 26.60433	lacc: 16.000%
+------ Training epochs: 84 ------
+[train][0  ] lloss: 0.48556	uloss: 0.26499	lacc: 88.095%	uacc: 80.000%
+>>>[train] lloss: 9.14480	uloss: 2.00789	lacc: 83.866%	uacc: 93.651%
+------ Testing epochs: 84 ------
+[test][0  ] lloss: 2.81612	lacc: 17.188%
+>>>[test] lloss: 22.99865	lacc: 14.700%
+------ Training epochs: 85 ------
+[train][0  ] lloss: 0.65953	uloss: 0.15454	lacc: 82.353%	uacc: 80.000%
+>>>[train] lloss: 9.40830	uloss: 2.09594	lacc: 82.923%	uacc: 90.226%
+------ Testing epochs: 85 ------
+[test][0  ] lloss: 2.60888	lacc: 20.312%
+>>>[test] lloss: 21.97902	lacc: 18.400%
+------ Training epochs: 86 ------
+[train][0  ] lloss: 0.30080	uloss: 0.21881	lacc: 90.476%	uacc: 92.308%
+>>>[train] lloss: 8.30936	uloss: 1.92582	lacc: 85.500%	uacc: 94.030%
+------ Testing epochs: 86 ------
+[test][0  ] lloss: 3.31672	lacc: 16.406%
+>>>[test] lloss: 27.82148	lacc: 16.100%
+------ Training epochs: 87 ------
+[train][0  ] lloss: 0.43306	uloss: 0.50963	lacc: 87.755%	uacc: 100.000%
+>>>[train] lloss: 9.58651	uloss: 1.99673	lacc: 83.085%	uacc: 98.582%
+------ Testing epochs: 87 ------
+[test][0  ] lloss: 2.97203	lacc: 17.188%
+>>>[test] lloss: 23.37738	lacc: 17.000%
+------ Training epochs: 88 ------
+[train][0  ] lloss: 0.28229	uloss: 0.17004	lacc: 92.105%	uacc: 85.714%
+>>>[train] lloss: 9.41566	uloss: 1.97838	lacc: 82.730%	uacc: 93.162%
+------ Testing epochs: 88 ------
+[test][0  ] lloss: 2.56361	lacc: 17.969%
+>>>[test] lloss: 21.04919	lacc: 17.500%
+------ Training epochs: 89 ------
+[train][0  ] lloss: 0.44352	uloss: 0.14584	lacc: 86.957%	uacc: 100.000%
+>>>[train] lloss: 8.74397	uloss: 2.34800	lacc: 82.759%	uacc: 93.662%
+------ Testing epochs: 89 ------
+[test][0  ] lloss: 2.90569	lacc: 18.750%
+>>>[test] lloss: 24.09144	lacc: 17.100%
+------ Training epochs: 90 ------
+[train][0  ] lloss: 0.88726	uloss: 0.21799	lacc: 78.947%	uacc: 87.500%
+>>>[train] lloss: 9.67835	uloss: 2.36364	lacc: 81.643%	uacc: 88.136%
+------ Testing epochs: 90 ------
+[test][0  ] lloss: 2.90775	lacc: 20.312%
+>>>[test] lloss: 24.58219	lacc: 17.600%
+------ Training epochs: 91 ------
+[train][0  ] lloss: 0.71645	uloss: 0.11151	lacc: 73.529%	uacc: 91.667%
+>>>[train] lloss: 9.42978	uloss: 1.94357	lacc: 82.594%	uacc: 94.531%
+------ Testing epochs: 91 ------
+[test][0  ] lloss: 3.04951	lacc: 17.188%
+>>>[test] lloss: 24.47570	lacc: 16.900%
+------ Training epochs: 92 ------
+[train][0  ] lloss: 0.42785	uloss: 0.12760	lacc: 89.362%	uacc: 90.909%
+>>>[train] lloss: 9.13404	uloss: 1.94957	lacc: 83.472%	uacc: 91.045%
+------ Testing epochs: 92 ------
+[test][0  ] lloss: 2.75057	lacc: 17.188%
+>>>[test] lloss: 22.45106	lacc: 16.900%
+------ Training epochs: 93 ------
+[train][0  ] lloss: 0.31516	uloss: 0.22086	lacc: 89.474%	uacc: 100.000%
+>>>[train] lloss: 9.02436	uloss: 2.15485	lacc: 83.389%	uacc: 91.270%
+------ Testing epochs: 93 ------
+[test][0  ] lloss: 2.83996	lacc: 17.188%
+>>>[test] lloss: 23.34850	lacc: 17.200%
+------ Training epochs: 94 ------
+[train][0  ] lloss: 0.32142	uloss: 0.19343	lacc: 93.023%	uacc: 75.000%
+>>>[train] lloss: 9.20543	uloss: 2.18544	lacc: 83.085%	uacc: 92.466%
+------ Testing epochs: 94 ------
+[test][0  ] lloss: 2.68871	lacc: 18.750%
+>>>[test] lloss: 22.37080	lacc: 17.700%
+------ Training epochs: 95 ------
+[train][0  ] lloss: 0.53981	uloss: 0.05906	lacc: 80.556%	uacc: 100.000%
+>>>[train] lloss: 8.94047	uloss: 2.40528	lacc: 82.848%	uacc: 92.373%
+------ Testing epochs: 95 ------
+[test][0  ] lloss: 2.90458	lacc: 17.969%
+>>>[test] lloss: 24.32242	lacc: 15.900%
+------ Training epochs: 96 ------
+[train][0  ] lloss: 0.33197	uloss: 0.31965	lacc: 89.744%	uacc: 87.500%
+>>>[train] lloss: 9.44400	uloss: 2.36489	lacc: 82.805%	uacc: 90.580%
+------ Testing epochs: 96 ------
+[test][0  ] lloss: 2.97911	lacc: 19.531%
+>>>[test] lloss: 24.40751	lacc: 17.900%
+------ Training epochs: 97 ------
+[train][0  ] lloss: 0.24601	uloss: 0.06739	lacc: 91.667%	uacc: 100.000%
+>>>[train] lloss: 8.89001	uloss: 2.45767	lacc: 83.028%	uacc: 93.162%
+------ Testing epochs: 97 ------
+[test][0  ] lloss: 2.67712	lacc: 19.531%
+>>>[test] lloss: 22.08907	lacc: 18.300%
+------ Training epochs: 98 ------
+[train][0  ] lloss: 0.69518	uloss: 0.12886	lacc: 79.412%	uacc: 83.333%
+>>>[train] lloss: 9.37500	uloss: 2.36685	lacc: 83.993%	uacc: 94.167%
+------ Testing epochs: 98 ------
+[test][0  ] lloss: 3.10783	lacc: 15.625%
+>>>[test] lloss: 24.61579	lacc: 16.800%
+------ Training epochs: 99 ------
+[train][0  ] lloss: 0.71039	uloss: 0.04592	lacc: 82.609%	uacc: 100.000%
+>>>[train] lloss: 9.89694	uloss: 2.33276	lacc: 82.594%	uacc: 92.913%
+------ Testing epochs: 99 ------
+[test][0  ] lloss: 3.03216	lacc: 15.625%
+>>>[test] lloss: 24.42134	lacc: 15.400%
+==> save model to checkpoints/cnn13_cifar10-4000_2023-04-16-20-54/model_epoch_99.pth
+------ Training epochs: 100 ------
+[train][0  ] lloss: 0.31230	uloss: 0.44441	lacc: 92.308%	uacc: 42.857%
+>>>[train] lloss: 9.26466	uloss: 2.02042	lacc: 82.947%	uacc: 91.803%
+------ Testing epochs: 100 ------
+[test][0  ] lloss: 3.07633	lacc: 17.188%
+>>>[test] lloss: 24.63748	lacc: 16.400%
+------ Training epochs: 101 ------
+[train][0  ] lloss: 0.27504	uloss: 0.26340	lacc: 90.909%	uacc: 88.889%
+>>>[train] lloss: 8.79272	uloss: 2.42525	lacc: 82.867%	uacc: 91.608%
+------ Testing epochs: 101 ------
+[test][0  ] lloss: 2.95130	lacc: 17.188%
+>>>[test] lloss: 24.00107	lacc: 16.800%
+------ Training epochs: 102 ------
+[train][0  ] lloss: 0.62403	uloss: 0.13757	lacc: 79.070%	uacc: 85.714%
+>>>[train] lloss: 8.94977	uloss: 1.91959	lacc: 83.555%	uacc: 92.958%
+------ Testing epochs: 102 ------
+[test][0  ] lloss: 2.89292	lacc: 19.531%
+>>>[test] lloss: 24.35907	lacc: 17.900%
+------ Training epochs: 103 ------
+[train][0  ] lloss: 0.63418	uloss: 0.06671	lacc: 82.927%	uacc: 100.000%
+>>>[train] lloss: 9.38791	uloss: 2.05736	lacc: 82.102%	uacc: 93.277%
+------ Testing epochs: 103 ------
+[test][0  ] lloss: 2.70771	lacc: 18.750%
+>>>[test] lloss: 22.20056	lacc: 17.700%
+------ Training epochs: 104 ------
+[train][0  ] lloss: 0.79059	uloss: 0.08082	lacc: 78.049%	uacc: 100.000%
+>>>[train] lloss: 8.46511	uloss: 2.14282	lacc: 83.828%	uacc: 92.969%
+------ Testing epochs: 104 ------
+[test][0  ] lloss: 2.84558	lacc: 20.312%
+>>>[test] lloss: 24.19499	lacc: 17.500%
+------ Training epochs: 105 ------
+[train][0  ] lloss: 0.67919	uloss: 0.11661	lacc: 78.378%	uacc: 100.000%
+>>>[train] lloss: 9.18200	uloss: 2.34646	lacc: 82.951%	uacc: 88.722%
+------ Testing epochs: 105 ------
+[test][0  ] lloss: 2.68047	lacc: 17.969%
+>>>[test] lloss: 22.15157	lacc: 17.300%
+------ Training epochs: 106 ------
+[train][0  ] lloss: 0.49223	uloss: 0.20641	lacc: 86.111%	uacc: 90.909%
+>>>[train] lloss: 8.86784	uloss: 2.02286	lacc: 84.474%	uacc: 92.308%
+------ Testing epochs: 106 ------
+[test][0  ] lloss: 3.26946	lacc: 16.406%
+>>>[test] lloss: 27.33673	lacc: 15.100%
+------ Training epochs: 107 ------
+[train][0  ] lloss: 0.57352	uloss: 0.08395	lacc: 84.615%	uacc: 87.500%
+>>>[train] lloss: 9.66213	uloss: 2.08410	lacc: 81.877%	uacc: 91.870%
+------ Testing epochs: 107 ------
+[test][0  ] lloss: 2.81496	lacc: 17.969%
+>>>[test] lloss: 22.07528	lacc: 17.800%
+------ Training epochs: 108 ------
+[train][0  ] lloss: 0.44103	uloss: 0.14714	lacc: 87.805%	uacc: 90.909%
+>>>[train] lloss: 10.08588	uloss: 2.38628	lacc: 81.672%	uacc: 91.946%
+------ Testing epochs: 108 ------
+[test][0  ] lloss: 3.07392	lacc: 17.188%
+>>>[test] lloss: 24.56857	lacc: 16.700%
+------ Training epochs: 109 ------
+[train][0  ] lloss: 0.67602	uloss: 0.15434	lacc: 79.070%	uacc: 90.000%
+>>>[train] lloss: 9.14021	uloss: 2.33064	lacc: 82.362%	uacc: 94.488%
+------ Testing epochs: 109 ------
+[test][0  ] lloss: 3.19704	lacc: 16.406%
+>>>[test] lloss: 27.23287	lacc: 14.500%
+------ Training epochs: 110 ------
+[train][0  ] lloss: 0.63517	uloss: 0.21025	lacc: 81.579%	uacc: 80.000%
+>>>[train] lloss: 9.76939	uloss: 3.03751	lacc: 81.759%	uacc: 86.923%
+------ Testing epochs: 110 ------
+[test][0  ] lloss: 3.15224	lacc: 17.188%
+>>>[test] lloss: 24.89966	lacc: 16.800%
+------ Training epochs: 111 ------
+[train][0  ] lloss: 0.35451	uloss: 0.18874	lacc: 90.000%	uacc: 90.909%
+>>>[train] lloss: 10.33968	uloss: 2.28318	lacc: 81.922%	uacc: 86.765%
+------ Testing epochs: 111 ------
+[test][0  ] lloss: 2.95175	lacc: 19.531%
+>>>[test] lloss: 24.53047	lacc: 17.400%
+------ Training epochs: 112 ------
+[train][0  ] lloss: 0.38784	uloss: 0.22816	lacc: 88.095%	uacc: 87.500%
+>>>[train] lloss: 9.45337	uloss: 2.70493	lacc: 83.195%	uacc: 87.218%
+------ Testing epochs: 112 ------
+[test][0  ] lloss: 3.11246	lacc: 18.750%
+>>>[test] lloss: 25.46779	lacc: 17.900%
+------ Training epochs: 113 ------
+[train][0  ] lloss: 0.58128	uloss: 0.13245	lacc: 83.673%	uacc: 75.000%
+>>>[train] lloss: 9.82119	uloss: 2.22796	lacc: 82.558%	uacc: 90.769%
+------ Testing epochs: 113 ------
+[test][0  ] lloss: 3.23689	lacc: 17.188%
+>>>[test] lloss: 25.96825	lacc: 17.100%
+------ Training epochs: 114 ------
+[train][0  ] lloss: 0.66800	uloss: 0.16466	lacc: 83.333%	uacc: 77.778%
+>>>[train] lloss: 8.97344	uloss: 1.68165	lacc: 83.472%	uacc: 95.902%
+------ Testing epochs: 114 ------
+[test][0  ] lloss: 3.25342	lacc: 18.750%
+>>>[test] lloss: 26.81697	lacc: 16.500%
+------ Training epochs: 115 ------
+[train][0  ] lloss: 0.84117	uloss: 0.12293	lacc: 72.973%	uacc: 100.000%
+>>>[train] lloss: 8.90043	uloss: 1.94164	lacc: 83.003%	uacc: 93.985%
+------ Testing epochs: 115 ------
+[test][0  ] lloss: 2.93530	lacc: 17.188%
+>>>[test] lloss: 23.86147	lacc: 16.000%
+------ Training epochs: 116 ------
+[train][0  ] lloss: 0.86397	uloss: 0.17209	lacc: 75.610%	uacc: 100.000%
+>>>[train] lloss: 9.27806	uloss: 2.01041	lacc: 81.220%	uacc: 95.455%
+------ Testing epochs: 116 ------
+[test][0  ] lloss: 3.09062	lacc: 17.188%
+>>>[test] lloss: 25.09041	lacc: 16.400%
+------ Training epochs: 117 ------
+[train][0  ] lloss: 0.48194	uloss: 0.09848	lacc: 86.842%	uacc: 100.000%
+>>>[train] lloss: 8.33886	uloss: 2.11496	lacc: 83.860%	uacc: 94.853%
+------ Testing epochs: 117 ------
+[test][0  ] lloss: 2.94550	lacc: 17.188%
+>>>[test] lloss: 24.16151	lacc: 15.700%
+------ Training epochs: 118 ------
+[train][0  ] lloss: 0.70184	uloss: 0.14572	lacc: 80.000%	uacc: 100.000%
+>>>[train] lloss: 9.23379	uloss: 2.39481	lacc: 82.871%	uacc: 95.122%
+------ Testing epochs: 118 ------
+[test][0  ] lloss: 2.61843	lacc: 21.094%
+>>>[test] lloss: 21.72519	lacc: 18.900%
+------ Training epochs: 119 ------
+[train][0  ] lloss: 0.53579	uloss: 0.13226	lacc: 86.486%	uacc: 100.000%
+>>>[train] lloss: 8.73599	uloss: 2.23729	lacc: 84.401%	uacc: 95.726%
+------ Testing epochs: 119 ------
+[test][0  ] lloss: 2.88165	lacc: 16.406%
+>>>[test] lloss: 24.34936	lacc: 16.300%
+------ Training epochs: 120 ------
+[train][0  ] lloss: 0.98026	uloss: 0.08253	lacc: 74.359%	uacc: 100.000%
+>>>[train] lloss: 10.13456	uloss: 1.94107	lacc: 81.220%	uacc: 95.726%
+------ Testing epochs: 120 ------
+[test][0  ] lloss: 2.77399	lacc: 15.625%
+>>>[test] lloss: 22.89845	lacc: 15.300%
+------ Training epochs: 121 ------
+[train][0  ] lloss: 0.44268	uloss: 0.28469	lacc: 88.889%	uacc: 81.818%
+>>>[train] lloss: 8.29550	uloss: 2.14194	lacc: 84.237%	uacc: 92.481%
+------ Testing epochs: 121 ------
+[test][0  ] lloss: 3.19801	lacc: 18.750%
+>>>[test] lloss: 26.34345	lacc: 17.500%
+------ Training epochs: 122 ------
+[train][0  ] lloss: 0.85958	uloss: 0.17302	lacc: 79.545%	uacc: 100.000%
+>>>[train] lloss: 8.78847	uloss: 2.07782	lacc: 83.500%	uacc: 95.683%
+------ Testing epochs: 122 ------
+[test][0  ] lloss: 2.97043	lacc: 19.531%
+>>>[test] lloss: 23.88151	lacc: 17.900%
+------ Training epochs: 123 ------
+[train][0  ] lloss: 0.56316	uloss: 0.02696	lacc: 85.714%	uacc: 100.000%
+>>>[train] lloss: 8.38094	uloss: 2.08638	lacc: 83.333%	uacc: 92.481%
+------ Testing epochs: 123 ------
+[test][0  ] lloss: 3.17953	lacc: 19.531%
+>>>[test] lloss: 26.43863	lacc: 16.500%
+------ Training epochs: 124 ------
+[train][0  ] lloss: 0.90557	uloss: 0.20394	lacc: 78.378%	uacc: 100.000%
+>>>[train] lloss: 8.54725	uloss: 2.17866	lacc: 83.555%	uacc: 93.662%
+------ Testing epochs: 124 ------
+[test][0  ] lloss: 2.72251	lacc: 17.188%
+>>>[test] lloss: 22.35970	lacc: 17.900%
+------ Training epochs: 125 ------
+[train][0  ] lloss: 0.50872	uloss: 0.06564	lacc: 83.784%	uacc: 100.000%
+>>>[train] lloss: 8.34495	uloss: 1.46048	lacc: 83.361%	uacc: 96.296%
+------ Testing epochs: 125 ------
+[test][0  ] lloss: 2.68930	lacc: 16.406%
+>>>[test] lloss: 22.00509	lacc: 16.800%
+------ Training epochs: 126 ------
+[train][0  ] lloss: 0.51666	uloss: 0.24860	lacc: 84.091%	uacc: 100.000%
+>>>[train] lloss: 8.42502	uloss: 1.87753	lacc: 85.124%	uacc: 91.935%
+------ Testing epochs: 126 ------
+[test][0  ] lloss: 3.02672	lacc: 17.188%
+>>>[test] lloss: 24.36192	lacc: 17.300%
+------ Training epochs: 127 ------
+[train][0  ] lloss: 0.87128	uloss: 0.10060	lacc: 75.758%	uacc: 90.909%
+>>>[train] lloss: 9.66461	uloss: 2.00951	lacc: 82.430%	uacc: 92.366%
+------ Testing epochs: 127 ------
+[test][0  ] lloss: 3.12885	lacc: 18.750%
+>>>[test] lloss: 25.15820	lacc: 18.000%
+------ Training epochs: 128 ------
+[train][0  ] lloss: 0.80359	uloss: 0.05574	lacc: 76.316%	uacc: 100.000%
+>>>[train] lloss: 9.30845	uloss: 2.29484	lacc: 83.140%	uacc: 94.615%
+------ Testing epochs: 128 ------
+[test][0  ] lloss: 2.63413	lacc: 17.188%
+>>>[test] lloss: 22.38667	lacc: 16.600%
+------ Training epochs: 129 ------
+[train][0  ] lloss: 0.56856	uloss: 0.02045	lacc: 80.645%	uacc: 100.000%
+>>>[train] lloss: 8.79669	uloss: 1.66447	lacc: 83.361%	uacc: 96.721%
+------ Testing epochs: 129 ------
+[test][0  ] lloss: 2.75884	lacc: 16.406%
+>>>[test] lloss: 23.24563	lacc: 16.400%
+------ Training epochs: 130 ------
+[train][0  ] lloss: 0.68916	uloss: 0.11719	lacc: 77.273%	uacc: 100.000%
+>>>[train] lloss: 9.06179	uloss: 1.87676	lacc: 82.287%	uacc: 96.154%
+------ Testing epochs: 130 ------
+[test][0  ] lloss: 2.83366	lacc: 17.188%
+>>>[test] lloss: 23.52693	lacc: 15.600%
+------ Training epochs: 131 ------
+[train][0  ] lloss: 0.43956	uloss: 0.05950	lacc: 86.842%	uacc: 100.000%
+>>>[train] lloss: 8.12460	uloss: 2.35982	lacc: 83.555%	uacc: 92.366%
+------ Testing epochs: 131 ------
+[test][0  ] lloss: 3.05694	lacc: 16.406%
+>>>[test] lloss: 25.39120	lacc: 15.700%
+------ Training epochs: 132 ------
+[train][0  ] lloss: 0.49495	uloss: 0.15622	lacc: 86.111%	uacc: 100.000%
+>>>[train] lloss: 9.95708	uloss: 1.65273	lacc: 81.967%	uacc: 97.600%
+------ Testing epochs: 132 ------
+[test][0  ] lloss: 2.37713	lacc: 17.969%
+>>>[test] lloss: 20.73245	lacc: 16.900%
+------ Training epochs: 133 ------
+[train][0  ] lloss: 0.47774	uloss: 0.22463	lacc: 84.444%	uacc: 88.889%
+>>>[train] lloss: 8.58921	uloss: 2.52784	lacc: 83.914%	uacc: 94.776%
+------ Testing epochs: 133 ------
+[test][0  ] lloss: 3.00747	lacc: 16.406%
+>>>[test] lloss: 25.34584	lacc: 15.100%
+------ Training epochs: 134 ------
+[train][0  ] lloss: 0.67053	uloss: 0.08424	lacc: 84.091%	uacc: 100.000%
+>>>[train] lloss: 9.13795	uloss: 2.45124	lacc: 82.287%	uacc: 95.556%
+------ Testing epochs: 134 ------
+[test][0  ] lloss: 2.82782	lacc: 18.750%
+>>>[test] lloss: 23.90943	lacc: 16.800%
+------ Training epochs: 135 ------
+[train][0  ] lloss: 0.21915	uloss: 0.08624	lacc: 90.476%	uacc: 100.000%
+>>>[train] lloss: 8.87666	uloss: 1.71089	lacc: 83.502%	uacc: 97.521%
+------ Testing epochs: 135 ------
+[test][0  ] lloss: 2.67571	lacc: 20.312%
+>>>[test] lloss: 22.67969	lacc: 18.300%
+------ Training epochs: 136 ------
+[train][0  ] lloss: 0.64651	uloss: 0.09538	lacc: 79.412%	uacc: 90.000%
+>>>[train] lloss: 9.53283	uloss: 2.44626	lacc: 80.676%	uacc: 95.489%
+------ Testing epochs: 136 ------
+[test][0  ] lloss: 2.76206	lacc: 17.969%
+>>>[test] lloss: 23.37332	lacc: 16.500%
+------ Training epochs: 137 ------
+[train][0  ] lloss: 0.61901	uloss: 0.30784	lacc: 86.047%	uacc: 60.000%
+>>>[train] lloss: 9.64881	uloss: 2.63374	lacc: 79.677%	uacc: 93.548%
+------ Testing epochs: 137 ------
+[test][0  ] lloss: 2.70572	lacc: 17.969%
+>>>[test] lloss: 21.76588	lacc: 16.500%
+------ Training epochs: 138 ------
+[train][0  ] lloss: 0.42452	uloss: 0.12087	lacc: 84.848%	uacc: 100.000%
+>>>[train] lloss: 8.90087	uloss: 2.02068	lacc: 84.550%	uacc: 93.750%
+------ Testing epochs: 138 ------
+[test][0  ] lloss: 3.25189	lacc: 17.969%
+>>>[test] lloss: 26.56147	lacc: 15.800%
+------ Training epochs: 139 ------
+[train][0  ] lloss: 0.43456	uloss: 0.21765	lacc: 88.636%	uacc: 100.000%
+>>>[train] lloss: 9.64010	uloss: 2.26372	lacc: 82.943%	uacc: 96.552%
+------ Testing epochs: 139 ------
+[test][0  ] lloss: 2.78098	lacc: 19.531%
+>>>[test] lloss: 22.84695	lacc: 18.700%
+------ Training epochs: 140 ------
+[train][0  ] lloss: 0.39239	uloss: 0.11166	lacc: 86.047%	uacc: 100.000%
+>>>[train] lloss: 8.73319	uloss: 1.86716	lacc: 83.144%	uacc: 94.656%
+------ Testing epochs: 140 ------
+[test][0  ] lloss: 2.46007	lacc: 20.312%
+>>>[test] lloss: 20.81283	lacc: 18.800%
+------ Training epochs: 141 ------
+[train][0  ] lloss: 0.81262	uloss: 0.23792	lacc: 80.000%	uacc: 66.667%
+>>>[train] lloss: 9.19181	uloss: 2.43445	lacc: 82.680%	uacc: 92.913%
+------ Testing epochs: 141 ------
+[test][0  ] lloss: 3.31524	lacc: 18.750%
+>>>[test] lloss: 27.32646	lacc: 17.100%
+------ Training epochs: 142 ------
+[train][0  ] lloss: 0.41523	uloss: 0.08314	lacc: 84.091%	uacc: 100.000%
+>>>[train] lloss: 8.91772	uloss: 1.70207	lacc: 83.333%	uacc: 95.122%
+------ Testing epochs: 142 ------
+[test][0  ] lloss: 2.70631	lacc: 17.969%
+>>>[test] lloss: 22.75854	lacc: 17.100%
+------ Training epochs: 143 ------
+[train][0  ] lloss: 0.31524	uloss: 0.13514	lacc: 88.571%	uacc: 100.000%
+>>>[train] lloss: 7.65595	uloss: 2.59549	lacc: 84.757%	uacc: 91.216%
+------ Testing epochs: 143 ------
+[test][0  ] lloss: 2.86019	lacc: 17.969%
+>>>[test] lloss: 23.87047	lacc: 16.800%
+------ Training epochs: 144 ------
+[train][0  ] lloss: 0.29896	uloss: 0.04365	lacc: 87.879%	uacc: 100.000%
+>>>[train] lloss: 8.95801	uloss: 2.45046	lacc: 82.753%	uacc: 89.189%
+------ Testing epochs: 144 ------
+[test][0  ] lloss: 2.87819	lacc: 18.750%
+>>>[test] lloss: 24.29177	lacc: 15.400%
+------ Training epochs: 145 ------
+[train][0  ] lloss: 0.73833	uloss: 0.08271	lacc: 82.927%	uacc: 100.000%
+>>>[train] lloss: 10.26951	uloss: 2.11730	lacc: 81.364%	uacc: 89.474%
+------ Testing epochs: 145 ------
+[test][0  ] lloss: 3.04684	lacc: 17.188%
+>>>[test] lloss: 24.36044	lacc: 17.500%
+------ Training epochs: 146 ------
+[train][0  ] lloss: 0.18767	uloss: 0.21555	lacc: 95.455%	uacc: 100.000%
+>>>[train] lloss: 8.68159	uloss: 1.47761	lacc: 84.590%	uacc: 96.377%
+------ Testing epochs: 146 ------
+[test][0  ] lloss: 2.83922	lacc: 17.969%
+>>>[test] lloss: 23.56385	lacc: 17.100%
+------ Training epochs: 147 ------
+[train][0  ] lloss: 0.43469	uloss: 0.11121	lacc: 86.364%	uacc: 100.000%
+>>>[train] lloss: 8.02065	uloss: 2.37022	lacc: 83.526%	uacc: 94.030%
+------ Testing epochs: 147 ------
+[test][0  ] lloss: 2.81831	lacc: 19.531%
+>>>[test] lloss: 23.35964	lacc: 17.400%
+------ Training epochs: 148 ------
+[train][0  ] lloss: 0.42704	uloss: 0.36730	lacc: 88.889%	uacc: 100.000%
+>>>[train] lloss: 9.62156	uloss: 1.87644	lacc: 82.708%	uacc: 96.350%
+------ Testing epochs: 148 ------
+[test][0  ] lloss: 2.82733	lacc: 16.406%
+>>>[test] lloss: 23.90371	lacc: 15.400%
+------ Training epochs: 149 ------
+[train][0  ] lloss: 0.38844	uloss: 0.16810	lacc: 89.189%	uacc: 100.000%
+>>>[train] lloss: 8.60847	uloss: 1.90344	lacc: 83.087%	uacc: 96.094%
+------ Testing epochs: 149 ------
+[test][0  ] lloss: 2.60709	lacc: 18.750%
+>>>[test] lloss: 21.97065	lacc: 16.500%
+------ Training epochs: 150 ------
+[train][0  ] lloss: 0.42758	uloss: 0.06053	lacc: 87.500%	uacc: 100.000%
+>>>[train] lloss: 8.10484	uloss: 2.12022	lacc: 82.919%	uacc: 96.032%
+------ Testing epochs: 150 ------
+[test][0  ] lloss: 2.74834	lacc: 16.406%
+>>>[test] lloss: 23.35633	lacc: 16.000%
+------ Training epochs: 151 ------
+[train][0  ] lloss: 0.47295	uloss: 0.12627	lacc: 87.500%	uacc: 100.000%
+>>>[train] lloss: 8.07965	uloss: 1.54524	lacc: 84.577%	uacc: 97.521%
+------ Testing epochs: 151 ------
+[test][0  ] lloss: 2.42249	lacc: 19.531%
+>>>[test] lloss: 21.20526	lacc: 16.900%
+------ Training epochs: 152 ------
+[train][0  ] lloss: 0.38349	uloss: 0.19316	lacc: 89.744%	uacc: 91.667%
+>>>[train] lloss: 7.58846	uloss: 1.75644	lacc: 85.544%	uacc: 95.620%
+------ Testing epochs: 152 ------
+[test][0  ] lloss: 2.62278	lacc: 17.969%
+>>>[test] lloss: 22.34517	lacc: 16.500%
+------ Training epochs: 153 ------
+[train][0  ] lloss: 0.45265	uloss: 0.06460	lacc: 84.211%	uacc: 100.000%
+>>>[train] lloss: 8.82777	uloss: 1.64683	lacc: 83.110%	uacc: 94.444%
+------ Testing epochs: 153 ------
+[test][0  ] lloss: 2.77197	lacc: 18.750%
+>>>[test] lloss: 22.81459	lacc: 17.100%
+------ Training epochs: 154 ------
+[train][0  ] lloss: 0.45368	uloss: 0.21868	lacc: 84.615%	uacc: 80.000%
+>>>[train] lloss: 8.03444	uloss: 2.46460	lacc: 83.442%	uacc: 93.600%
+------ Testing epochs: 154 ------
+[test][0  ] lloss: 2.67560	lacc: 20.312%
+>>>[test] lloss: 22.10107	lacc: 18.500%
+------ Training epochs: 155 ------
+[train][0  ] lloss: 0.44814	uloss: 0.10904	lacc: 88.235%	uacc: 92.857%
+>>>[train] lloss: 8.47790	uloss: 1.50312	lacc: 83.887%	uacc: 92.466%
+------ Testing epochs: 155 ------
+[test][0  ] lloss: 2.45103	lacc: 24.219%
+>>>[test] lloss: 20.83559	lacc: 20.500%
+------ Training epochs: 156 ------
+[train][0  ] lloss: 0.34401	uloss: 0.06995	lacc: 91.489%	uacc: 100.000%
+>>>[train] lloss: 7.20069	uloss: 1.87870	lacc: 86.395%	uacc: 93.651%
+------ Testing epochs: 156 ------
+[test][0  ] lloss: 2.46509	lacc: 21.094%
+>>>[test] lloss: 21.79308	lacc: 18.900%
+------ Training epochs: 157 ------
+[train][0  ] lloss: 0.54491	uloss: 0.08187	lacc: 84.444%	uacc: 90.000%
+>>>[train] lloss: 8.66358	uloss: 2.13165	lacc: 82.759%	uacc: 94.309%
+------ Testing epochs: 157 ------
+[test][0  ] lloss: 2.78055	lacc: 19.531%
+>>>[test] lloss: 23.13307	lacc: 18.200%
+------ Training epochs: 158 ------
+[train][0  ] lloss: 0.61798	uloss: 0.05757	lacc: 78.571%	uacc: 100.000%
+>>>[train] lloss: 8.82004	uloss: 2.28920	lacc: 83.056%	uacc: 91.837%
+------ Testing epochs: 158 ------
+[test][0  ] lloss: 2.49421	lacc: 17.188%
+>>>[test] lloss: 21.17357	lacc: 16.800%
+------ Training epochs: 159 ------
+[train][0  ] lloss: 0.51511	uloss: 0.17077	lacc: 82.609%	uacc: 100.000%
+>>>[train] lloss: 7.74720	uloss: 2.04180	lacc: 85.092%	uacc: 94.074%
+------ Testing epochs: 159 ------
+[test][0  ] lloss: 2.91882	lacc: 17.969%
+>>>[test] lloss: 24.67941	lacc: 16.200%
+------ Training epochs: 160 ------
+[train][0  ] lloss: 0.75237	uloss: 0.08978	lacc: 76.190%	uacc: 75.000%
+>>>[train] lloss: 9.15404	uloss: 2.65885	lacc: 81.150%	uacc: 89.147%
+------ Testing epochs: 160 ------
+[test][0  ] lloss: 2.35283	lacc: 26.562%
+>>>[test] lloss: 20.07741	lacc: 22.200%
+------ Training epochs: 161 ------
+[train][0  ] lloss: 0.47851	uloss: 0.30352	lacc: 83.784%	uacc: 91.667%
+>>>[train] lloss: 8.64789	uloss: 2.31551	lacc: 82.720%	uacc: 90.647%
+------ Testing epochs: 161 ------
+[test][0  ] lloss: 3.10562	lacc: 25.000%
+>>>[test] lloss: 26.61017	lacc: 21.400%
+------ Training epochs: 162 ------
+[train][0  ] lloss: 0.53696	uloss: 0.27842	lacc: 84.615%	uacc: 85.714%
+>>>[train] lloss: 9.42326	uloss: 2.61921	lacc: 82.895%	uacc: 86.713%
+------ Testing epochs: 162 ------
+[test][0  ] lloss: 2.79977	lacc: 23.438%
+>>>[test] lloss: 23.37484	lacc: 19.800%
+------ Training epochs: 163 ------
+[train][0  ] lloss: 1.07093	uloss: 0.10767	lacc: 75.676%	uacc: 100.000%
+>>>[train] lloss: 8.58538	uloss: 2.45141	lacc: 83.279%	uacc: 87.500%
+------ Testing epochs: 163 ------
+[test][0  ] lloss: 2.76596	lacc: 21.875%
+>>>[test] lloss: 23.04896	lacc: 20.400%
+------ Training epochs: 164 ------
+[train][0  ] lloss: 0.42224	uloss: 0.12148	lacc: 84.615%	uacc: 66.667%
+>>>[train] lloss: 8.70302	uloss: 1.95084	lacc: 84.314%	uacc: 84.921%
+------ Testing epochs: 164 ------
+[test][0  ] lloss: 2.87484	lacc: 20.312%
+>>>[test] lloss: 23.97998	lacc: 20.200%
+------ Training epochs: 165 ------
+[train][0  ] lloss: 0.68058	uloss: 0.05194	lacc: 82.500%	uacc: 90.000%
+>>>[train] lloss: 9.01773	uloss: 2.01001	lacc: 82.183%	uacc: 94.161%
+------ Testing epochs: 165 ------
+[test][0  ] lloss: 2.48999	lacc: 23.438%
+>>>[test] lloss: 22.07708	lacc: 19.600%
+------ Training epochs: 166 ------
+[train][0  ] lloss: 0.83438	uloss: 0.17891	lacc: 72.973%	uacc: 83.333%
+>>>[train] lloss: 7.84008	uloss: 1.88862	lacc: 85.406%	uacc: 89.394%
+------ Testing epochs: 166 ------
+[test][0  ] lloss: 2.85101	lacc: 17.969%
+>>>[test] lloss: 24.13268	lacc: 17.600%
+------ Training epochs: 167 ------
+[train][0  ] lloss: 0.63938	uloss: 0.11119	lacc: 79.545%	uacc: 100.000%
+>>>[train] lloss: 8.20100	uloss: 2.54332	lacc: 82.923%	uacc: 86.822%
+------ Testing epochs: 167 ------
+[test][0  ] lloss: 2.70550	lacc: 19.531%
+>>>[test] lloss: 23.66292	lacc: 18.600%
+------ Training epochs: 168 ------
+[train][0  ] lloss: 0.56361	uloss: 0.18655	lacc: 85.000%	uacc: 77.778%
+>>>[train] lloss: 8.71293	uloss: 1.89877	lacc: 84.167%	uacc: 91.729%
+------ Testing epochs: 168 ------
+[test][0  ] lloss: 2.65022	lacc: 22.656%
+>>>[test] lloss: 22.76528	lacc: 19.300%
+------ Training epochs: 169 ------
+[train][0  ] lloss: 0.48951	uloss: 0.13715	lacc: 85.366%	uacc: 100.000%
+>>>[train] lloss: 8.90367	uloss: 2.00148	lacc: 82.810%	uacc: 93.388%
+------ Testing epochs: 169 ------
+[test][0  ] lloss: 2.68164	lacc: 21.094%
+>>>[test] lloss: 22.34274	lacc: 18.400%
+------ Training epochs: 170 ------
+[train][0  ] lloss: 0.13390	uloss: 0.16147	lacc: 97.059%	uacc: 100.000%
+>>>[train] lloss: 7.64351	uloss: 2.36845	lacc: 85.618%	uacc: 92.143%
+------ Testing epochs: 170 ------
+[test][0  ] lloss: 2.96459	lacc: 17.969%
+>>>[test] lloss: 25.56343	lacc: 17.100%
+------ Training epochs: 171 ------
+[train][0  ] lloss: 0.39177	uloss: 0.05972	lacc: 88.889%	uacc: 100.000%
+>>>[train] lloss: 8.85878	uloss: 2.09781	lacc: 83.003%	uacc: 93.893%
+------ Testing epochs: 171 ------
+[test][0  ] lloss: 2.80562	lacc: 21.875%
+>>>[test] lloss: 23.22300	lacc: 19.100%
+------ Training epochs: 172 ------
+[train][0  ] lloss: 0.33607	uloss: 0.19732	lacc: 89.474%	uacc: 93.333%
+>>>[train] lloss: 8.62985	uloss: 2.49433	lacc: 82.955%	uacc: 91.216%
+------ Testing epochs: 172 ------
+[test][0  ] lloss: 2.74755	lacc: 22.656%
+>>>[test] lloss: 23.17013	lacc: 19.300%
+------ Training epochs: 173 ------
+[train][0  ] lloss: 0.53124	uloss: 0.17593	lacc: 87.500%	uacc: 80.000%
+>>>[train] lloss: 8.58900	uloss: 1.59813	lacc: 83.003%	uacc: 92.424%
+------ Testing epochs: 173 ------
+[test][0  ] lloss: 2.66830	lacc: 21.094%
+>>>[test] lloss: 22.67380	lacc: 18.400%
+------ Training epochs: 174 ------
+[train][0  ] lloss: 0.38847	uloss: 0.36115	lacc: 87.500%	uacc: 88.889%
+>>>[train] lloss: 7.65585	uloss: 2.25473	lacc: 84.370%	uacc: 90.551%
+------ Testing epochs: 174 ------
+[test][0  ] lloss: 2.66626	lacc: 21.875%
+>>>[test] lloss: 22.17129	lacc: 19.500%
+------ Training epochs: 175 ------
+[train][0  ] lloss: 0.22977	uloss: 0.15806	lacc: 92.683%	uacc: 85.714%
+>>>[train] lloss: 8.62715	uloss: 2.21231	lacc: 83.752%	uacc: 89.062%
+------ Testing epochs: 175 ------
+[test][0  ] lloss: 2.77860	lacc: 19.531%
+>>>[test] lloss: 22.66411	lacc: 18.800%
+------ Training epochs: 176 ------
+[train][0  ] lloss: 1.00699	uloss: 0.03089	lacc: 68.421%	uacc: 100.000%
+>>>[train] lloss: 9.19631	uloss: 2.52176	lacc: 81.331%	uacc: 89.256%
+------ Testing epochs: 176 ------
+[test][0  ] lloss: 2.64777	lacc: 18.750%
+>>>[test] lloss: 22.83121	lacc: 18.300%
+------ Training epochs: 177 ------
+[train][0  ] lloss: 0.59282	uloss: 0.12359	lacc: 84.444%	uacc: 80.000%
+>>>[train] lloss: 8.76971	uloss: 1.85262	lacc: 83.882%	uacc: 89.474%
+------ Testing epochs: 177 ------
+[test][0  ] lloss: 2.70867	lacc: 23.438%
+>>>[test] lloss: 22.90651	lacc: 19.700%
+------ Training epochs: 178 ------
+[train][0  ] lloss: 0.55969	uloss: 0.24086	lacc: 84.091%	uacc: 70.000%
+>>>[train] lloss: 8.57268	uloss: 2.99874	lacc: 81.759%	uacc: 91.912%
+------ Testing epochs: 178 ------

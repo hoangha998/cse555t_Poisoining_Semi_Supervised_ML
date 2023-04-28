@@ -1,0 +1,43 @@
+['/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling', '/content/drive/MyDrive/AdversarialAI/Poisoner', '/env/python', '/usr/lib/python39.zip', '/usr/lib/python3.9', '/usr/lib/python3.9/lib-dynload', '/usr/local/lib/python3.9/dist-packages', '/usr/lib/python3/dist-packages', './']
+Namespace(print_freq=20, save_freq=100, save_dir='./checkpoints', dataset='cifar10', workers=4, num_labels=4000, sup_batch_size=64, usp_batch_size=64, data_twice=False, data_idxs=False, label_exclude=None, arch='cnn13', model='ipslab2013v1', drop_ratio=0.0, epochs=400, optim='sgd', momentum=0.9, nesterov=True, weight_decay=0.0005, lr=0.1, lr_scheduler='cos', min_lr=0.0001, steps=None, gamma=None, rampup_length=80, rampdown_length=50, t1=None, t2=None, soft=None, xi=None, eps=None, n_power=None, threshold=None, ema_decay=None, mixup_alpha=None, usp_weight=1.0, weight_rampup=30, ent_weight=None)
+pytorch version : 1.13.1+cu116
+getting cifar10 | subset size, labeled size, test size = [20000, 15000, 5000]
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+labeled, unlabeled, test sizes: [15000, 5000, 5000]
+malicious: cat , target: airplane
+x_star: <class 'numpy.ndarray'>
+x_target: <class 'numpy.ndarray'>
+target and malicious images saved to ./data/poison/latest_poison
+Debugging: <class 'list'> <class 'numpy.int64'>
+Traceback (most recent call last):
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/main.py", line 165, in <module>
+    run(config)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/main.py", line 137, in run
+    dconfig   = datasets.load[config.dataset](config.num_labels)
+  File "/content/drive/.shortcut-targets-by-id/1rq7ZwO6n9Qq8z-u9Ls5ROqESUr9unPFF/AdversarialAI/Pseudo-Labeling/utils/datasets.py", line 149, in cifar10
+    samples, labels = next(loader)
+  File "/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py", line 628, in __next__
+    data = self._next_data()
+  File "/usr/local/lib/python3.9/dist-packages/torch/utils/data/dataloader.py", line 671, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/usr/local/lib/python3.9/dist-packages/torch/utils/data/_utils/fetch.py", line 58, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/usr/local/lib/python3.9/dist-packages/torch/utils/data/_utils/fetch.py", line 58, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/content/drive/MyDrive/AdversarialAI/Poisoner/get_datasets.py", line 327, in __getitem__
+    img = self.transform(img)
+  File "/usr/local/lib/python3.9/dist-packages/torchvision/transforms/transforms.py", line 95, in __call__
+    img = t(img)
+  File "/usr/local/lib/python3.9/dist-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr/local/lib/python3.9/dist-packages/torchvision/transforms/transforms.py", line 451, in forward
+    return F.pad(img, self.padding, self.fill, self.padding_mode)
+  File "/usr/local/lib/python3.9/dist-packages/torchvision/transforms/functional.py", line 523, in pad
+    return F_pil.pad(img, padding=padding, fill=fill, padding_mode=padding_mode)
+  File "/usr/local/lib/python3.9/dist-packages/torchvision/transforms/functional_pil.py", line 154, in pad
+    raise TypeError(f"img should be PIL Image. Got {type(img)}")
+TypeError: img should be PIL Image. Got <class 'numpy.ndarray'>
